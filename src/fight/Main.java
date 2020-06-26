@@ -5,7 +5,6 @@ import acm.program.GraphicsProgram;
 
 import heroes.Hero;
 import enemies.Enemy;
-import java.util.Scanner;
 
 enum Level { EASY , DIFFICULT; }
 
@@ -15,7 +14,6 @@ public class Main  extends GraphicsProgram {
     private Enemy enemy;
     private Hero hero;
     private Fight fight;
-    private Scanner reader;
 
     public void run() {
       executeGame();
@@ -35,12 +33,9 @@ public class Main  extends GraphicsProgram {
     // Ask user methods
 
     private Level userInputLevel() {
-        System.out.println("Select the level of difficulty you want (EASY or DIFFICULT):");
-        reader = new Scanner(System.in);
-        String levelString = reader.nextLine();
+        String levelString = readLine("Select the level of difficulty you want (EASY or DIFFICULT)");
         return Level.valueOf(levelString);
     }
-
 
     private void addImage(String imagePath) {
         GImage logo = new GImage(imagePath);
