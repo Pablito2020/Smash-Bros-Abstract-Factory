@@ -7,6 +7,7 @@ public class Goomba implements Enemy {
     private static final double DAMAGE = 4;
     private static final double INITIAL_LIFE = 30;
     private static final String NAME = "Goomba";
+    private static final String IMAGE_PATH = "Goomba.jpg";
 
     private double life;
 
@@ -32,6 +33,10 @@ public class Goomba implements Enemy {
 
     public boolean hasDied() {
         return life <= 0;
+    }
+
+    public String getImagePath() {
+        return IMAGE_PATH;
     }
 
 }

@@ -7,6 +7,7 @@ public class Bowser implements Enemy {
     private static final double DAMAGE = 10;
     private static final String NAME = "Bowser";
     private static final double INITIAL_LIFE = 100;
+    private static final String IMAGE_PATH = "Bowser.jpeg";
 
     private double life;
 
@@ -32,6 +33,10 @@ public class Bowser implements Enemy {
 
     public boolean hasDied() {
         return life <= 0;
+    }
+
+    public String getImagePath() {
+        return IMAGE_PATH;
     }
 
 }

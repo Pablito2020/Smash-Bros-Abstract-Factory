@@ -8,4 +8,5 @@ public interface Hero {
     void attack(Enemy enemy);
     double percentageLife();
     boolean hasDied();
+    String getImagePath();
 }

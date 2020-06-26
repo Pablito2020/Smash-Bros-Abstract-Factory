@@ -7,6 +7,7 @@ public class Mario implements Hero {
     private static final double DAMAGE = 12;
     private static final double LIFE = 100;
     private static final String NAME = "Mario";
+    private static final String IMAGE_PATH = "Mario.jpg";
 
     private double life;
 
@@ -32,6 +33,10 @@ public class Mario implements Hero {
 
     public boolean hasDied() {
         return life <= 0;
+    }
+
+    public String getImagePath() {
+        return IMAGE_PATH;
     }
 
 }

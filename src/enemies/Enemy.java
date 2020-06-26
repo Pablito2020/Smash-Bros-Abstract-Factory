@@ -9,4 +9,5 @@ public interface Enemy {
 
     double percentageLife();
     boolean hasDied();
+    String getImagePath();
 }

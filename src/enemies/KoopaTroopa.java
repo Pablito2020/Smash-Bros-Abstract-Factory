@@ -7,6 +7,7 @@ public class KoopaTroopa implements Enemy {
     private static final double DAMAGE = 6;
     private static final double INITIAL_LIFE = 60;
     private static final String NAME = "Koopa Troopa";
+    private static final String IMAGE_PATH = "KoopaTroopa.jpg";
 
     private double life;
 
@@ -32,6 +33,10 @@ public class KoopaTroopa implements Enemy {
 
     public boolean hasDied() {
         return life <= 0;
+    }
+
+    public String getImagePath() {
+        return IMAGE_PATH;
     }
 
 }
