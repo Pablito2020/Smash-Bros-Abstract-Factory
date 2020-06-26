@@ -5,7 +5,7 @@ import heroes.Luigi;
 
 public class EasyHero implements HeroFactory {
 
-    public Hero getHeroe() {
+    public Hero getHero() {
         return new Luigi();
     }
 

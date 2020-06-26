@@ -18,7 +18,7 @@ public class CharacterChooser {
 
     public static Hero getHero(Level level) {
         assignHeroLevel(level);
-        return heroCreator.getHeroe();
+        return heroCreator.getHero();
     }
 
     // NOTE: This method needs to change when a new level is added!

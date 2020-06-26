@@ -5,7 +5,7 @@ import heroes.Mario;
 
 public class DifficultHero implements HeroFactory {
 
-    public Hero getHeroe() {
+    public Hero getHero() {
         return new Mario();
     }
 
