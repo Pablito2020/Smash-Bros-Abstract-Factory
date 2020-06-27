@@ -7,7 +7,7 @@ public class Luigi implements Hero {
     private static final double DAMAGE = 8;
     private static final double LIFE = 120;
     private static final String NAME = "Luigi";
-    private static final String IMAGE_PATH = "Luigi.jpeg";
+    private static final String IMAGE_PATH = "Luigi.jpg";
 
     private double life;
 

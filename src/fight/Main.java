@@ -6,6 +6,8 @@ import acm.program.GraphicsProgram;
 import heroes.Hero;
 import enemies.Enemy;
 
+import java.awt.*;
+
 enum Level { EASY , DIFFICULT; }
 
 public class Main  extends GraphicsProgram {
@@ -20,11 +22,15 @@ public class Main  extends GraphicsProgram {
     }
 
     private void executeGame() {
+        frontEndStyle();
+        // Type of characters
         currentLevel = userInputLevel();
         hero = CharacterChooser.getHero(currentLevel);
         enemy = CharacterChooser.getEnemy(currentLevel);
+        // Images of the characters
         addImage(hero.getImagePath());
         addImage(enemy.getImagePath());
+        // Fight
         fight = new Fight(hero, enemy);
         fight.showInfoPlayers();
         fight.fightPlayers();
@@ -37,11 +43,17 @@ public class Main  extends GraphicsProgram {
         return Level.valueOf(levelString);
     }
 
+    // Front end methods (need to change to an external class)
     private void addImage(String imagePath) {
         GImage logo = new GImage(imagePath);
         double x = (getWidth() - logo.getWidth()) / 2;
         double y = (getHeight() - logo.getHeight()) / 2;
         add(logo, x, y);
+    }
+
+    private void frontEndStyle() {
+        setTitle("Pokemon Smash!");
+        setBackground(Color.BLACK);
     }
 
 }
