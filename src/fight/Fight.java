@@ -1,7 +1,7 @@
 package fight;
 
-import heroes.Hero;
-import enemies.Enemy;
+import entity.heroes.Hero;
+import entity.enemies.Enemy;
 public class Fight {
 
     private Hero hero;

@@ -2,19 +2,19 @@ package fight;
 
 import acm.program.GraphicsProgram;
 
+import factory.EntityFactory;
+import factory.Level;
 import gui.FightDisplay;
-import heroes.Hero;
-import enemies.Enemy;
-
-enum Level { EASY , DIFFICULT; }
+import entity.heroes.Hero;
+import entity.enemies.Enemy;
 
 public class Main  extends GraphicsProgram {
 
-    private Level currentLevel;
+    private EntityFactory entityCreator;
     private Enemy enemy;
     private Hero hero;
-    private Fight fight;
     private FightDisplay fightDisplay;
+    private Fight fight;
 
     public void run() {
       fightDisplay = new FightDisplay(this);
@@ -22,27 +22,30 @@ public class Main  extends GraphicsProgram {
     }
 
     private void executeGame() {
-        // Type of characters
-        currentLevel = userInputLevel();
-        hero = CharacterChooser.getHero(currentLevel);
-        enemy = CharacterChooser.getEnemy(currentLevel);
+        assignLevelToEntities();
+        createFightUI();
+        fightEntities();
+    }
 
-        // Fight display
+    // Auxiliary methods
+
+    private void assignLevelToEntities() {
+        String levelString = readLine("Select the level of difficulty you want:");
+        entityCreator = EntityFactory.parseFactory(Level.valueOf(levelString));
+        hero = entityCreator.getHero();
+        enemy = entityCreator.getEnemy();
+    }
+
+    private void createFightUI() {
         fightDisplay.addHero(hero);
         fightDisplay.addEnemy(enemy);
         fightDisplay.addButtonFight();
+    }
 
-        // Fight
+    private void fightEntities() {
         fight = new Fight(hero, enemy);
         fight.showInfoPlayers();
         fight.fightPlayers();
-    }
-
-    // Ask user methods
-
-    private Level userInputLevel() {
-        String levelString = readLine("Select the level of difficulty you want:");
-        return Level.valueOf(levelString);
     }
 
 }

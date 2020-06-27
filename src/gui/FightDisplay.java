@@ -4,8 +4,8 @@ import java.awt.Color;
 
 import acm.graphics.GImage;
 import acm.program.GraphicsProgram;
-import enemies.Enemy;
-import heroes.Hero;
+import entity.enemies.Enemy;
+import entity.heroes.Hero;
 
 public class FightDisplay {
 

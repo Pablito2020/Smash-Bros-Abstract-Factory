@@ -20,7 +20,7 @@ public class Button {
         this.applicationContext = applicationContext;
         this.buttonColor = Color.RED;
         this.textColor = Color.WHITE;
-        this.text = "Attack !";
+        this.text = "Attack!";
     }
 
     public void addButton() {

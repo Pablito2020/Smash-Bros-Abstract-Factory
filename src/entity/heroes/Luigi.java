@@ -1,6 +1,6 @@
-package heroes;
+package entity.heroes;
 
-import enemies.Enemy;
+import entity.enemies.Enemy;
 
 public class Luigi implements Hero {
     

@@ -1,17 +1,17 @@
-package enemies;
+package entity.enemies;
 
-import heroes.Hero;
+import entity.heroes.Hero;
 
-public class KoopaTroopa implements Enemy {
+public class Bowser implements Enemy {
 
-    private static final double DAMAGE = 6;
-    private static final double INITIAL_LIFE = 60;
-    private static final String NAME = "Koopa Troopa";
-    private static final String IMAGE_PATH = "KoopaTroopa.jpg";
+    private static final double DAMAGE = 10;
+    private static final String NAME = "Bowser";
+    private static final double INITIAL_LIFE = 100;
+    private static final String IMAGE_PATH = "Bowser.jpg";
 
     private double life;
 
-    public KoopaTroopa() {
+    public Bowser() {
         this.life = INITIAL_LIFE;
     }
 
@@ -40,5 +40,3 @@ public class KoopaTroopa implements Enemy {
     }
 
 }
-
-

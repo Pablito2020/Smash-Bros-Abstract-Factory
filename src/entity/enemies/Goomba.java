@@ -1,6 +1,6 @@
-package enemies;
+package entity.enemies;
 
-import heroes.Hero;
+import entity.heroes.Hero;
 
 public class Goomba implements Enemy {
 

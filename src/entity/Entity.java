@@ -1,11 +1,8 @@
-package heroes;
+package entity;
 
-import enemies.Enemy;
-
-public interface Hero {
+public interface Entity {
     String getName();
     void reduceLife(double quantity);
-    void attack(Enemy enemy);
     double percentageLife();
     boolean hasDied();
     String getImagePath();
