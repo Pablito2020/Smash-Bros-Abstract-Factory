@@ -1,7 +1,7 @@
 package factory;
 
-import entity.enemies.Enemy;
-import entity.heroes.Hero;
+import entity.live.Enemy;
+import entity.live.Hero;
 import factory.types.DifficultEntity;
 import factory.types.EasyEntity;
 

@@ -1,10 +1,10 @@
 package factory.types;
 
-import entity.enemies.Bowser;
-import entity.enemies.Enemy;
-import entity.enemies.KoopaTroopa;
-import entity.heroes.Hero;
-import entity.heroes.Mario;
+import entity.live.enemies.Bowser;
+import entity.live.Enemy;
+import entity.live.enemies.KoopaTroopa;
+import entity.live.Hero;
+import entity.live.heroes.Mario;
 import factory.EntityFactory;
 
 import java.util.Random;

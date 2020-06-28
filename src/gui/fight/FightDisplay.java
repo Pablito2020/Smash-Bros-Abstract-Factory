@@ -2,8 +2,8 @@ package gui.fight;
 
 import acm.graphics.GImage;
 import acm.program.GraphicsProgram;
-import entity.enemies.Enemy;
-import entity.heroes.Hero;
+import entity.live.Enemy;
+import entity.live.Hero;
 import gui.components.Button;
 import gui.Display;
 

@@ -5,8 +5,8 @@ import acm.program.GraphicsProgram;
 import factory.EntityFactory;
 import factory.Level;
 import gui.Display;
-import entity.heroes.Hero;
-import entity.enemies.Enemy;
+import entity.live.Hero;
+import entity.live.Enemy;
 import gui.fight.FightDisplay;
 import gui.main.LevelChooser;
 

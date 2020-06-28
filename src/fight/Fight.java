@@ -1,8 +1,8 @@
 package fight;
 
 import acm.program.GraphicsProgram;
-import entity.heroes.Hero;
-import entity.enemies.Enemy;
+import entity.live.Hero;
+import entity.live.Enemy;
 public class Fight {
 
     private GraphicsProgram applicationContext;

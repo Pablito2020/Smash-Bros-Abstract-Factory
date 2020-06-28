@@ -1,10 +1,10 @@
 package factory.types;
 
-import entity.enemies.Enemy;
-import entity.enemies.Goomba;
-import entity.enemies.KoopaTroopa;
-import entity.heroes.Hero;
-import entity.heroes.Luigi;
+import entity.live.Enemy;
+import entity.live.enemies.Goomba;
+import entity.live.enemies.KoopaTroopa;
+import entity.live.Hero;
+import entity.live.heroes.Luigi;
 import factory.EntityFactory;
 
 import java.util.Random;
