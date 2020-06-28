@@ -21,7 +21,7 @@ public class FightDisplay {
     public FightDisplay(GraphicsProgram applicationContext) {
         this.applicationContext = applicationContext;
         this.visualChangesCanvas();
-        this.attackButton = new Button(applicationContext);
+        this.attackButton = new Button(applicationContext, applicationContext.getWidth(), applicationContext.getHeight());
     }
 
     private void visualChangesCanvas() {
@@ -46,6 +46,7 @@ public class FightDisplay {
     }
 
     public void addButtonFight() {
+        attackButton.setText("Attack!");
         attackButton.addButton();
     }
 
