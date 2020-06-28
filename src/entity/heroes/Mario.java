@@ -28,6 +28,7 @@ public class Mario implements Hero {
     }
 
     public double percentageLife() {
+        if (life < 0) return 0;
         return life;
     }
 

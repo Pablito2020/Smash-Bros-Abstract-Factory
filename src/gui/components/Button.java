@@ -6,12 +6,11 @@ import acm.program.GraphicsProgram;
 
 import java.awt.*;
 
-public class Button {
-
-    private GraphicsProgram applicationContext;
+class Button {
 
     private GRect button;
     private Color buttonColor;
+    private GraphicsProgram applicationContext;
 
     private GLabel buttonText;
     private String text;
@@ -20,7 +19,7 @@ public class Button {
     private double x;
     private double y;
 
-    public Button(GraphicsProgram applicationContext, double x, double y) {
+    private Button(GraphicsProgram applicationContext, double x, double y) {
         this.applicationContext = applicationContext;
         this.buttonColor = Color.RED;
         this.textColor = Color.WHITE;

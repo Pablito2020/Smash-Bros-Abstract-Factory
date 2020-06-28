@@ -28,6 +28,7 @@ public class Goomba implements Enemy {
     }
 
     public double percentageLife() {
+        if (life < 0) return 0;
         return life;
     }
 

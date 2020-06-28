@@ -1,35 +1,31 @@
 package gui;
 
-import java.awt.Color;
-
 import acm.graphics.GImage;
 import acm.program.GraphicsProgram;
 import entity.enemies.Enemy;
 import entity.heroes.Hero;
 
-public class FightDisplay {
+public class FightDisplay extends Display {
 
-    private static final Color BACKGROUND_COLOR = Color.BLACK;
-    private static final String TITLE_NAME = "Pokemon Smash";
-
-    private GraphicsProgram applicationContext;
     private GImage imageHero;
     private GImage imageEnemy;
     private Button attackButton;
 
-
-    public FightDisplay(GraphicsProgram applicationContext) {
-        this.applicationContext = applicationContext;
-        this.visualChangesCanvas();
-        this.attackButton = new Button(applicationContext, applicationContext.getWidth(), applicationContext.getHeight());
+    public FightDisplay(GraphicsProgram applicationContext, Hero hero, Enemy enemy) {
+        super(applicationContext);          // Invoke Display constructor
+        this.addHero(hero);
+        this.addEnemy(enemy);
+        this.attackButton = new Button(applicationContext.getWidth(), applicationContext.getHeight());
+        this.addButtonFight();
     }
 
-    private void visualChangesCanvas() {
-        applicationContext.setTitle(TITLE_NAME);
-        applicationContext.setBackground(BACKGROUND_COLOR);
+    public boolean pressedAttackButton() {
+        return false; //TODO: Needs to change
     }
 
-    public void addHero(Hero hero) {
+    public boolean pressed
+
+    private void addHero(Hero hero) {
         String imagePath = hero.getImagePath();
         imageHero = new GImage(imagePath);
         double x = (applicationContext.getWidth() - imageHero.getWidth()) * 1 / 4;
@@ -37,7 +33,7 @@ public class FightDisplay {
         applicationContext.add(imageHero, x, y);
     }
 
-    public void addEnemy(Enemy enemy) {
+    private void addEnemy(Enemy enemy) {
         String imagePath = enemy.getImagePath();
         imageEnemy = new GImage(imagePath);
         double x = (applicationContext.getWidth() - imageEnemy.getWidth()) * 3/ 4;
@@ -45,7 +41,7 @@ public class FightDisplay {
         applicationContext.add(imageEnemy, x, y);
     }
 
-    public void addButtonFight() {
+    private void addButtonFight() {
         attackButton.setText("Attack!");
         attackButton.addButton();
     }

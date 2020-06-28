@@ -28,6 +28,7 @@ public class Bowser implements Enemy {
     }
 
     public double percentageLife() {
+        if (life < 0) return 0;
         return life;
     }
 
