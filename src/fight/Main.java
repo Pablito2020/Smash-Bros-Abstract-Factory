@@ -4,24 +4,27 @@ import acm.program.GraphicsProgram;
 
 import factory.EntityFactory;
 import factory.Level;
-import gui.FightDisplay;
+import gui.Display;
 import entity.heroes.Hero;
 import entity.enemies.Enemy;
+import gui.fight.FightDisplay;
+import gui.main.LevelChooser;
 
 public class Main  extends GraphicsProgram {
 
     private EntityFactory entityCreator;
     private Enemy enemy;
     private Hero hero;
-    private FightDisplay fightDisplay;
+    private Display display;
     private Fight fight;
 
     public void run() {
-      fightDisplay = new FightDisplay(this);
-      executeGame();
+      this.executeGame();
     }
 
     private void executeGame() {
+        display = new LevelChooser(this);
+        display.addElements();
         assignLevelToEntities();
         createFightUI();
         fightEntities();
@@ -37,13 +40,13 @@ public class Main  extends GraphicsProgram {
     }
 
     private void createFightUI() {
-        fightDisplay.addHero(hero);
-        fightDisplay.addEnemy(enemy);
-        fightDisplay.addButtonFight();
+        display.clean();
+        this.display = new FightDisplay(this, hero, enemy);
+        display.addElements();
     }
 
     private void fightEntities() {
-        fight = new Fight(hero, enemy);
+        fight = new Fight(this, hero, enemy);
         fight.showInfoPlayers();
         fight.fightPlayers();
     }

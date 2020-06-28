@@ -1,13 +1,16 @@
 package fight;
 
+import acm.program.GraphicsProgram;
 import entity.heroes.Hero;
 import entity.enemies.Enemy;
 public class Fight {
 
+    private GraphicsProgram applicationContext;
     private Hero hero;
     private Enemy enemy;
 
-    public Fight(Hero hero, Enemy enemy) {
+    public Fight(GraphicsProgram applicationContext, Hero hero, Enemy enemy) {
+        this.applicationContext = applicationContext;
         this.hero = hero;
         this.enemy = enemy;
     }
@@ -29,6 +32,7 @@ public class Fight {
         System.out.println(hero.percentageLife());
         hero.attack(enemy);
         System.out.println(enemy.percentageLife());
+        applicationContext.pause(1000);
     }
 
 }

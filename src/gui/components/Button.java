@@ -1,4 +1,4 @@
-package gui;
+package gui.components;
 
 import acm.graphics.GLabel;
 import acm.graphics.GRect;
@@ -6,7 +6,7 @@ import acm.program.GraphicsProgram;
 
 import java.awt.*;
 
-class Button {
+public class Button {
 
     private GRect button;
     private Color buttonColor;
@@ -19,7 +19,7 @@ class Button {
     private double x;
     private double y;
 
-    private Button(GraphicsProgram applicationContext, double x, double y) {
+    public Button(GraphicsProgram applicationContext, double x, double y) {
         this.applicationContext = applicationContext;
         this.buttonColor = Color.RED;
         this.textColor = Color.WHITE;
@@ -45,7 +45,7 @@ class Button {
     private void addButtonText() {
         buttonText = new GLabel(text);
         buttonText.setColor(textColor);
-        double xText = button.getX() + (buttonText.getWidth() / 4 );
+        double xText = button.getX() + (buttonText.getWidth() / 4);
         double yText = button.getY() + buttonText.getHeight();
         applicationContext.add(buttonText, xText, yText);
     }
@@ -60,6 +60,11 @@ class Button {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public void setVisible(boolean visible) {
+        button.setVisible(visible);
+        buttonText.setVisible(visible);
     }
 
 }

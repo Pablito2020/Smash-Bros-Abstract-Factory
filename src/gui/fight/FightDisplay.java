@@ -1,29 +1,29 @@
-package gui;
+package gui.fight;
 
 import acm.graphics.GImage;
 import acm.program.GraphicsProgram;
 import entity.enemies.Enemy;
 import entity.heroes.Hero;
+import gui.components.Button;
+import gui.Display;
 
-public class FightDisplay extends Display {
+import java.awt.*;
 
+public class FightDisplay implements Display {
+
+    private GraphicsProgram applicationContext;
     private GImage imageHero;
     private GImage imageEnemy;
     private Button attackButton;
+    private Hero hero;
+    private Enemy enemy;
 
     public FightDisplay(GraphicsProgram applicationContext, Hero hero, Enemy enemy) {
-        super(applicationContext);          // Invoke Display constructor
-        this.addHero(hero);
-        this.addEnemy(enemy);
-        this.attackButton = new Button(applicationContext.getWidth(), applicationContext.getHeight());
-        this.addButtonFight();
+        this.applicationContext = applicationContext;
+        this.hero = hero;
+        this.enemy = enemy;
+        this.attackButton = new Button(applicationContext, applicationContext.getWidth(), applicationContext.getHeight());
     }
-
-    public boolean pressedAttackButton() {
-        return false; //TODO: Needs to change
-    }
-
-    public boolean pressed
 
     private void addHero(Hero hero) {
         String imagePath = hero.getImagePath();
@@ -46,4 +46,19 @@ public class FightDisplay extends Display {
         attackButton.addButton();
     }
 
+    @Override
+    public void clean() {
+        imageHero.setVisible(false);
+        imageEnemy.setVisible(false);
+        attackButton.setVisible(false);
+    }
+
+    @Override
+    public void addElements() {
+        this.applicationContext.setBackground(Color.BLACK);
+        this.applicationContext.setTitle("Pokemon Smash!");
+        this.addHero(hero);
+        this.addEnemy(enemy);
+        this.addButtonFight();
+    }
 }
