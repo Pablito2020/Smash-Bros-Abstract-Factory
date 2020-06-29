@@ -10,6 +10,6 @@ public class Luigi extends Hero {
         this.imagePath = "Luigi.jpg";
         this.damage = 8;
     }
-    
+
 }
 

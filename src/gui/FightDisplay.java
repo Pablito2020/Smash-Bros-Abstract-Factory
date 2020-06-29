@@ -10,12 +10,12 @@ import java.awt.*;
 
 public class FightDisplay implements Display {
 
-    private GraphicsProgram applicationContext;
+    private final GraphicsProgram applicationContext;
     private GImage imageHero;
     private GImage imageEnemy;
-    private Button attackButton;
-    private Hero hero;
-    private Enemy enemy;
+    private final Button attackButton;
+    private final Hero hero;
+    private final Enemy enemy;
 
     public FightDisplay(GraphicsProgram applicationContext, Hero hero, Enemy enemy) {
         this.applicationContext = applicationContext;
@@ -35,8 +35,8 @@ public class FightDisplay implements Display {
     private void addEnemy(Enemy enemy) {
         String imagePath = enemy.getImagePath();
         imageEnemy = new GImage(imagePath);
-        double x = (applicationContext.getWidth() - imageEnemy.getWidth()) * 3/ 4;
-        double y = (applicationContext.getHeight() - imageEnemy.getHeight())  / 3;
+        double x = (applicationContext.getWidth() - imageEnemy.getWidth()) * 3 / 4;
+        double y = (applicationContext.getHeight() - imageEnemy.getHeight()) / 3;
         applicationContext.add(imageEnemy, x, y);
     }
 

@@ -10,6 +10,6 @@ public class Mario extends Hero {
         this.imagePath = "Mario.jpg";
         this.damage = 12;
     }
-    
+
 }
 

@@ -8,10 +8,10 @@ import java.awt.*;
 
 public class LevelChooser implements Display {
 
-    private GraphicsProgram applicationContext;
-    private Button easyLevel;
-    private Button difficultLevel;
-    private GLabel title;
+    private final GraphicsProgram applicationContext;
+    private final Button easyLevel;
+    private final Button difficultLevel;
+    private final GLabel title;
 
     public LevelChooser(GraphicsProgram applicationContext) {
         this.applicationContext = applicationContext;
@@ -37,13 +37,13 @@ public class LevelChooser implements Display {
     }
 
     private Button createEasyButton() {
-       Button easy = new Button(applicationContext, applicationContext.getWidth() / 3, applicationContext.getHeight() / 2);
-       easy.setText("EASY");
-       return easy;
+        Button easy = new Button(applicationContext, applicationContext.getWidth() / 3, applicationContext.getHeight() / 2);
+        easy.setText("EASY");
+        return easy;
     }
 
     private Button createDifficultButton() {
-        Button difficult =  new Button(applicationContext, applicationContext.getWidth() * 2 / 3, applicationContext.getHeight() / 2);
+        Button difficult = new Button(applicationContext, applicationContext.getWidth() * 2 / 3, applicationContext.getHeight() / 2);
         difficult.setText("DIFFICULT");
         return difficult;
     }

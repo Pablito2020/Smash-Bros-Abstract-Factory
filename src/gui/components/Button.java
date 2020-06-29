@@ -10,14 +10,14 @@ public class Button {
 
     private GRect button;
     private Color buttonColor;
-    private GraphicsProgram applicationContext;
+    private final GraphicsProgram applicationContext;
 
     private GLabel buttonText;
     private String text;
     private Color textColor;
 
-    private double x;
-    private double y;
+    private final double x;
+    private final double y;
 
     public Button(GraphicsProgram applicationContext, double x, double y) {
         this.applicationContext = applicationContext;

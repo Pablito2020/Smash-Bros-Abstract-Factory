@@ -1,13 +1,14 @@
 package fight;
 
 import acm.program.GraphicsProgram;
-import entity.live.Hero;
 import entity.live.Enemy;
+import entity.live.Hero;
+
 public class Fight {
 
-    private GraphicsProgram applicationContext;
-    private Hero hero;
-    private Enemy enemy;
+    private final GraphicsProgram applicationContext;
+    private final Hero hero;
+    private final Enemy enemy;
 
     public Fight(GraphicsProgram applicationContext, Hero hero, Enemy enemy) {
         this.applicationContext = applicationContext;
@@ -15,14 +16,14 @@ public class Fight {
         this.enemy = enemy;
     }
 
-    public void showInfoPlayers() { 
+    public void showInfoPlayers() {
         System.out.println("Fight between " + hero.getName() + " and " + enemy.getName() + " is going to start!");
         System.out.println("[" + hero.getName() + "] " + "life: " + hero.percentageLife());
         System.out.println("[" + enemy.getName() + "] " + "life: " + enemy.percentageLife());
     }
 
     public void fightPlayers() {
-        while(!enemy.hasDied() && !hero.hasDied()) {
+        while (!enemy.hasDied() && !hero.hasDied()) {
             executeFight();
         }
     }

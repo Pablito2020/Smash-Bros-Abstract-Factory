@@ -1,12 +1,11 @@
 package fight;
 
 import acm.program.GraphicsProgram;
-
+import entity.live.Enemy;
+import entity.live.Hero;
 import factory.EntityFactory;
 import factory.Level;
 import gui.Display;
-import entity.live.Hero;
-import entity.live.Enemy;
 import gui.FightDisplay;
 import gui.LevelChooser;
 
@@ -19,7 +18,7 @@ public class Main extends GraphicsProgram {
     private Fight fight;
 
     public void run() {
-      this.executeGame();
+        this.executeGame();
     }
 
     private void executeGame() {
