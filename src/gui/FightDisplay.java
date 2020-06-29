@@ -1,11 +1,10 @@
-package gui.fight;
+package gui;
 
 import acm.graphics.GImage;
 import acm.program.GraphicsProgram;
 import entity.live.Enemy;
 import entity.live.Hero;
 import gui.components.Button;
-import gui.Display;
 
 import java.awt.*;
 

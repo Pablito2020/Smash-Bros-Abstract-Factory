@@ -34,7 +34,7 @@ public class Button {
     }
 
     private void addButtonObject() {
-        button = new GRect(50, 25);
+        button = new GRect(70, 20);
         button.setFilled(true);
         button.setFillColor(buttonColor);
         double xButton = this.x - button.getWidth();

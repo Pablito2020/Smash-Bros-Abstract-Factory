@@ -7,10 +7,10 @@ import factory.Level;
 import gui.Display;
 import entity.live.Hero;
 import entity.live.Enemy;
-import gui.fight.FightDisplay;
-import gui.main.LevelChooser;
+import gui.FightDisplay;
+import gui.LevelChooser;
 
-public class Main  extends GraphicsProgram {
+public class Main extends GraphicsProgram {
 
     private EntityFactory entityCreator;
     private Enemy enemy;
@@ -23,8 +23,7 @@ public class Main  extends GraphicsProgram {
     }
 
     private void executeGame() {
-        display = new LevelChooser(this);
-        display.addElements();
+        createLevelUI();
         assignLevelToEntities();
         createFightUI();
         fightEntities();
@@ -49,6 +48,11 @@ public class Main  extends GraphicsProgram {
         fight = new Fight(this, hero, enemy);
         fight.showInfoPlayers();
         fight.fightPlayers();
+    }
+
+    private void createLevelUI() {
+        display = new LevelChooser(this);
+        display.addElements();
     }
 
 }

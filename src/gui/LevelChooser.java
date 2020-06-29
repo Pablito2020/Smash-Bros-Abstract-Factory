@@ -1,8 +1,7 @@
-package gui.main;
+package gui;
 
 import acm.graphics.GLabel;
 import acm.program.GraphicsProgram;
-import gui.Display;
 import gui.components.Button;
 
 import java.awt.*;
@@ -38,19 +37,22 @@ public class LevelChooser implements Display {
     }
 
     private Button createEasyButton() {
-       Button easy = new Button(applicationContext, applicationContext.getWidth() / 2, applicationContext.getHeight() / 2);
+       Button easy = new Button(applicationContext, applicationContext.getWidth() / 3, applicationContext.getHeight() / 2);
        easy.setText("EASY");
        return easy;
     }
 
     private Button createDifficultButton() {
-        Button difficult =  new Button(applicationContext, applicationContext.getHeight() / 3, applicationContext.getWidth() / 3);
+        Button difficult =  new Button(applicationContext, applicationContext.getWidth() * 2 / 3, applicationContext.getHeight() / 2);
         difficult.setText("DIFFICULT");
         return difficult;
     }
 
     private GLabel createSmashBrosText() {
-        GLabel title = new GLabel("SUPER SMASH BROS", applicationContext.getHeight() / 6, applicationContext.getWidth() / 4);
+        GLabel title = new GLabel("SUPER SMASH BROS");
+        double x = (applicationContext.getWidth() - title.getWidth()) / 4;
+        double y = applicationContext.getHeight() / 4;
+        title.setLocation(x, y);
         title.setFont("SansSerif-bold-40");
         title.setColor(Color.WHITE);
         return title;
