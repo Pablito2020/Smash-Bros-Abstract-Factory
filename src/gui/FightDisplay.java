@@ -7,13 +7,14 @@ import entity.live.Hero;
 import gui.components.Button;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
 
 public class FightDisplay implements Display {
 
     private final GraphicsProgram applicationContext;
     private GImage imageHero;
     private GImage imageEnemy;
-    private final Button attackButton;
+    public final Button attackButton;
     private final Hero hero;
     private final Enemy enemy;
 
@@ -21,7 +22,7 @@ public class FightDisplay implements Display {
         this.applicationContext = applicationContext;
         this.hero = hero;
         this.enemy = enemy;
-        this.attackButton = new Button(applicationContext, applicationContext.getWidth(), applicationContext.getHeight());
+        this.attackButton = new Button(applicationContext.getWidth() / 2, applicationContext.getHeight() / 2, "Attack!");
     }
 
     private void addHero(Hero hero) {
@@ -40,11 +41,6 @@ public class FightDisplay implements Display {
         applicationContext.add(imageEnemy, x, y);
     }
 
-    private void addButtonFight() {
-        attackButton.setText("Attack!");
-        attackButton.addButton();
-    }
-
     @Override
     public void clean() {
         imageHero.setVisible(false);
@@ -56,14 +52,9 @@ public class FightDisplay implements Display {
     public void addElements() {
         this.applicationContext.setBackground(Color.BLACK);
         this.applicationContext.setTitle("Pokemon Smash!");
+        this.applicationContext.add(attackButton);
         this.addHero(hero);
         this.addEnemy(enemy);
-        this.addButtonFight();
-    }
-
-    @Override
-    public boolean isValid(double x, double y) {
-        return x >= attackButton.getX() && x <= attackButton.getX() + attackButton.getWidth() && y >= attackButton.getY() && y <= attackButton.getY() + attackButton.getHeight();
     }
 
 }

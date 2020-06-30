@@ -1,86 +1,64 @@
 package gui.components;
 
-import acm.graphics.GLabel;
-import acm.graphics.GRect;
-import acm.program.GraphicsProgram;
+import acm.graphics.*;
 
 import java.awt.*;
 
-public class Button {
+public class Button extends GCompound {
 
-    private GRect button;
-    private Color buttonColor;
-    private final GraphicsProgram applicationContext;
+    private static final double PADDING = 0.1;
 
+    private GRoundRect button;
     private GLabel buttonText;
     private String text;
-    private Color textColor;
 
-    private final double x;
-    private final double y;
+    private Color textColor = Color.WHITE;
+    private Color buttonColor = Color.RED;
 
-    public Button(GraphicsProgram applicationContext, double x, double y) {
-        this.applicationContext = applicationContext;
-        this.buttonColor = Color.RED;
-        this.textColor = Color.WHITE;
-        this.text = "";
-        this.x = x;
-        this.y = y;
+    public Button(double x, double y, String text) {
+        this.text = text;
+        this.createText();
+        this.createRectangle(x, y);
+        this.colorizeButtonPropierties();
+        this.addButtonToCompound(x, y);
     }
 
-    public void addButton() {
-        addButtonObject();
-        addButtonText();
+    private void createRectangle(double x, double y) {
+        GRectangle rectangleFromText = buttonText.getBounds();
+        double width = rectangleFromText.getWidth() * PADDING * 2 + rectangleFromText.getWidth() ;
+        double height = rectangleFromText.getHeight() * PADDING * 2  + rectangleFromText.getHeight();
+        button = new GRoundRect(x,y, width, height);
     }
 
-    private void addButtonObject() {
-        button = new GRect(70, 20);
+    private void createText() {
+        buttonText = new GLabel(text);
+    }
+
+    private void addButtonToCompound(double x, double y) {
+        add(button);
+        add(buttonText, x + button.getWidth() * PADDING, y + buttonText.getHeight());
+    }
+
+    private void colorizeButtonPropierties() {
         button.setFilled(true);
         button.setFillColor(buttonColor);
-        double xButton = this.x - button.getWidth();
-        double yButton = this.y - button.getHeight();
-        applicationContext.add(button, xButton, yButton);
-    }
-
-    private void addButtonText() {
-        buttonText = new GLabel(text);
         buttonText.setColor(textColor);
-        double xText = button.getX() + (buttonText.getWidth() / 4);
-        double yText = button.getY() + buttonText.getHeight();
-        applicationContext.add(buttonText, xText, yText);
     }
 
-    public void setButtonColor(Color buttonColor) {
-        this.buttonColor = buttonColor;
+    public void setRectangleColor(Color color) {
+        buttonColor = color;
     }
 
-    public void setTextColor(Color textColor) {
-        this.textColor = textColor;
+    public Color getRectangleColor() {
+        return buttonColor;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setTextColor(Color color) {
+        textColor = color;
     }
 
-    public void setVisible(boolean visible) {
-        button.setVisible(visible);
-        buttonText.setVisible(visible);
-    }
-
-    public double getX() {
-        return button.getX();
-    }
-
-    public double getY() {
-       return button.getY();
-    }
-
-    public double getWidth() {
-        return button.getWidth();
-    }
-
-    public double getHeight() {
-        return button.getHeight();
+    public Color getTextColor() {
+        return textColor;
     }
 
 }

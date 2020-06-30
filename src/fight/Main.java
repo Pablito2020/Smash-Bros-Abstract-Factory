@@ -26,9 +26,8 @@ public class Main extends GraphicsProgram {
 
     // Auxiliary methods
 
-    private void assignLevelToEntities() {
-        String levelString = readLine("Select the level of difficulty you want:");
-        entityCreator = EntityFactory.parseFactory(Level.valueOf(levelString));
+    private void assignLevelToEntities(Level level) {
+        entityCreator = EntityFactory.parseFactory(level);
         hero = entityCreator.getHero();
         enemy = entityCreator.getEnemy();
     }
@@ -56,11 +55,22 @@ public class Main extends GraphicsProgram {
     public void mouseClicked(MouseEvent e) {
         double x = e.getX();
         double y = e.getY();
-        if (display instanceof LevelChooser && display.isValid(x,y)) {
-                assignLevelToEntities();
-                createFightUI();
+
+        if (display instanceof LevelChooser && ((LevelChooser) display).difficultLevel.contains(x,y)) {
+            assignLevelToEntities(Level.DIFFICULT);
+            createFightUI();
+            return;
         }
-        if(display instanceof FightDisplay && display.isValid(x,y)) fightEntities();
+        if(display instanceof LevelChooser && ((LevelChooser)display).easyLevel.contains(x,y)) {
+            assignLevelToEntities(Level.EASY);
+            createFightUI();
+            return;
+        }
+
+        if(display instanceof FightDisplay && ((FightDisplay) display).attackButton.contains(x,y)) {
+            fightEntities();
+        }
+
     }
 
 }
