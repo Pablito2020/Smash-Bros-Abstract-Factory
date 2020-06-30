@@ -9,6 +9,8 @@ import gui.Display;
 import gui.FightDisplay;
 import gui.LevelChooser;
 
+import java.awt.event.MouseEvent;
+
 public class Main extends GraphicsProgram {
 
     private EntityFactory entityCreator;
@@ -18,14 +20,8 @@ public class Main extends GraphicsProgram {
     private Fight fight;
 
     public void run() {
-        this.executeGame();
-    }
-
-    private void executeGame() {
-        createLevelUI();
-        assignLevelToEntities();
-        createFightUI();
-        fightEntities();
+        this.addMouseListeners();
+        this.createLevelUI();
     }
 
     // Auxiliary methods
@@ -52,6 +48,19 @@ public class Main extends GraphicsProgram {
     private void createLevelUI() {
         display = new LevelChooser(this);
         display.addElements();
+    }
+
+    // Mouse Listener
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        double x = e.getX();
+        double y = e.getY();
+        if (display instanceof LevelChooser && display.isValid(x,y)) {
+                assignLevelToEntities();
+                createFightUI();
+        }
+        if(display instanceof FightDisplay && display.isValid(x,y)) fightEntities();
     }
 
 }

@@ -60,4 +60,10 @@ public class FightDisplay implements Display {
         this.addEnemy(enemy);
         this.addButtonFight();
     }
+
+    @Override
+    public boolean isValid(double x, double y) {
+        return x >= attackButton.getX() && x <= attackButton.getX() + attackButton.getWidth() && y >= attackButton.getY() && y <= attackButton.getY() + attackButton.getHeight();
+    }
+
 }

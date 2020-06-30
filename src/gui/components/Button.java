@@ -67,4 +67,20 @@ public class Button {
         buttonText.setVisible(visible);
     }
 
+    public double getX() {
+        return button.getX();
+    }
+
+    public double getY() {
+       return button.getY();
+    }
+
+    public double getWidth() {
+        return button.getWidth();
+    }
+
+    public double getHeight() {
+        return button.getHeight();
+    }
+
 }

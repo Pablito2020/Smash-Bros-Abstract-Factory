@@ -36,6 +36,13 @@ public class LevelChooser implements Display {
         difficultLevel.addButton();
     }
 
+    @Override
+    public boolean isValid(double x, double y) {
+        boolean buttonEasy = x >= easyLevel.getX() && x <= easyLevel.getX() + easyLevel.getWidth() && y >= easyLevel.getY() && y <= easyLevel.getHeight() + easyLevel.getY();
+        boolean buttonDifficult = x >= difficultLevel.getX() && x <= difficultLevel.getX() + difficultLevel.getWidth() && y >= difficultLevel.getY() && y <= difficultLevel.getHeight() + difficultLevel.getY();
+        return buttonDifficult || buttonEasy;
+    }
+
     private Button createEasyButton() {
         Button easy = new Button(applicationContext, applicationContext.getWidth() / 3, applicationContext.getHeight() / 2);
         easy.setText("EASY");
