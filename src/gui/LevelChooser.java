@@ -9,22 +9,20 @@ import java.awt.*;
 public class LevelChooser implements Display {
 
     private final GraphicsProgram applicationContext;
-    public final Button easyLevel;
-    public final Button difficultLevel;
+    public Button easyLevel;
+    public Button difficultLevel;
     private final GLabel title;
 
     public LevelChooser(GraphicsProgram applicationContext) {
         this.applicationContext = applicationContext;
         this.title = createSmashBrosText();
-        this.easyLevel = new Button(applicationContext.getWidth() / 4, applicationContext.getHeight() / 2, "Easy");
-        this.difficultLevel = new Button(applicationContext.getWidth() / 2, applicationContext.getHeight() / 2 , "Difficult");
     }
 
     @Override
     public void clean() {
-        title.setVisible(false);
-        easyLevel.setVisible(false);
-        difficultLevel.setVisible(false);
+        applicationContext.remove(title);
+        applicationContext.remove(easyLevel);
+        applicationContext.remove(difficultLevel);
     }
 
     @Override
@@ -32,8 +30,7 @@ public class LevelChooser implements Display {
         applicationContext.setBackground(Color.BLACK);
         applicationContext.setTitle("Choose a level:");
         addTitleScreen();
-        applicationContext.add(easyLevel);
-        applicationContext.add(difficultLevel);
+        addButtonsScreen();
     }
 
     // Title Smash Bros
@@ -49,6 +46,13 @@ public class LevelChooser implements Display {
         double x = (applicationContext.getWidth() - title.getWidth()) / 2;
         double y = (applicationContext.getHeight() - title.getHeight()) / 2;
         applicationContext.add(title, x, y);
+    }
+
+    private void addButtonsScreen() {
+        this.easyLevel = new Button(title.getX(), applicationContext.getHeight() * 2 / 3, "Easy");
+        this.difficultLevel = new Button(title.getX() + title.getWidth(), applicationContext.getHeight() * 2 /3, "Difficult");
+        applicationContext.add(easyLevel);
+        applicationContext.add(difficultLevel);
     }
 
 }

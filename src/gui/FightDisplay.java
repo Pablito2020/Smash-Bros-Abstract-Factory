@@ -7,7 +7,6 @@ import entity.live.Hero;
 import gui.components.Button;
 
 import java.awt.*;
-import java.awt.event.MouseEvent;
 
 public class FightDisplay implements Display {
 
@@ -43,15 +42,15 @@ public class FightDisplay implements Display {
 
     @Override
     public void clean() {
-        imageHero.setVisible(false);
-        imageEnemy.setVisible(false);
-        attackButton.setVisible(false);
+        applicationContext.remove(imageHero);
+        applicationContext.remove(imageEnemy);
+        applicationContext.remove(attackButton);
     }
 
     @Override
     public void addElements() {
         this.applicationContext.setBackground(Color.BLACK);
-        this.applicationContext.setTitle("Pokemon Smash!");
+        this.applicationContext.setTitle("Smash!");
         this.applicationContext.add(attackButton);
         this.addHero(hero);
         this.addEnemy(enemy);
