@@ -56,4 +56,13 @@ public class FightDisplay implements Display {
         this.addEnemy(enemy);
     }
 
+    public void executeFight() {
+        while(!enemy.hasDied() && !hero.hasDied()) {
+            enemy.attack(hero);
+            hero.attack(enemy);
+            applicationContext.setTitle("Enemy: "+  enemy.percentageLife() + ", Hero: " + hero.percentageLife());
+            applicationContext.pause(2000);
+        }
+    }
+
 }

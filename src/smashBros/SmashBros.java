@@ -19,9 +19,10 @@ public class SmashBros extends GraphicsProgram {
     private Hero hero;
     private Display display;
 
+
     public void run() {
-        this.addMouseListeners();
         this.createLevelUI();
+        this.addMouseListeners();
     }
 
     // Auxiliary methods
@@ -55,18 +56,9 @@ public class SmashBros extends GraphicsProgram {
     }
 
     public void fightPlayers() {
-        while (!enemy.hasDied() && !hero.hasDied()) {
-            executeFight();
-        }
+        ((FightDisplay) display).executeFight();
     }
 
-    private void executeFight() {
-        enemy.attack(hero);
-        System.out.println(hero.percentageLife());
-        hero.attack(enemy);
-        System.out.println(enemy.percentageLife());
-        pause(1000);
-    }
 
     // Mouse Listener
 
