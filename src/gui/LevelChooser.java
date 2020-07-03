@@ -1,34 +1,31 @@
 package gui;
 
+import acm.graphics.GCanvas;
 import acm.graphics.GLabel;
-import acm.program.GraphicsProgram;
 import gui.components.Button;
 
 import java.awt.*;
 
-public class LevelChooser implements Display {
+public class LevelChooser {
 
-    private final GraphicsProgram applicationContext;
+    private final GCanvas gCanvas;
     public Button easyLevel;
     public Button difficultLevel;
     private final GLabel title;
 
-    public LevelChooser(GraphicsProgram applicationContext) {
-        this.applicationContext = applicationContext;
+    public LevelChooser(GCanvas applicationContext) {
+        this.gCanvas = applicationContext;
         this.title = createSmashBrosText();
     }
 
-    @Override
     public void clean() {
-        applicationContext.remove(title);
-        applicationContext.remove(easyLevel);
-        applicationContext.remove(difficultLevel);
+        gCanvas.remove(title);
+        gCanvas.remove(easyLevel);
+        gCanvas.remove(difficultLevel);
     }
 
-    @Override
     public void addElements() {
-        applicationContext.setBackground(Color.BLACK);
-        applicationContext.setTitle("Choose a level:");
+        gCanvas.setBackground(Color.BLACK);
         addTitleScreen();
         addButtonsScreen();
     }
@@ -43,16 +40,16 @@ public class LevelChooser implements Display {
     }
 
     private void addTitleScreen() {
-        double x = (applicationContext.getWidth() - title.getWidth()) / 2;
-        double y = (applicationContext.getHeight() - title.getHeight()) / 2;
-        applicationContext.add(title, x, y);
+        double x = (gCanvas.getWidth() - title.getWidth()) / 2;
+        double y = (gCanvas.getHeight() - title.getHeight()) / 2;
+        gCanvas.add(title, x, y);
     }
 
     private void addButtonsScreen() {
-        this.easyLevel = new Button(title.getX(), applicationContext.getHeight() * 2 / 3, "Easy");
-        this.difficultLevel = new Button(title.getX() + title.getWidth(), applicationContext.getHeight() * 2 /3, "Difficult");
-        applicationContext.add(easyLevel);
-        applicationContext.add(difficultLevel);
+        this.easyLevel = new Button(title.getX(), gCanvas.getHeight() * 2 / 3, "Easy");
+        this.difficultLevel = new Button(title.getX() + title.getWidth(), gCanvas.getHeight() * 2 /3, "Difficult");
+        gCanvas.add(easyLevel);
+        gCanvas.add(difficultLevel);
     }
 
 }

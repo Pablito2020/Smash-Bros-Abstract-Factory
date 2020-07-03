@@ -6,7 +6,6 @@ import entity.live.Enemy;
 import entity.live.Hero;
 import factory.EntityFactory;
 import factory.Level;
-import gui.Display;
 import gui.FightDisplay;
 import gui.LevelChooser;
 
@@ -17,7 +16,8 @@ public class SmashBros extends GraphicsProgram {
     private EntityFactory entityCreator;
     private Enemy enemy;
     private Hero hero;
-    private Display display;
+    private LevelChooser levelDisplay;
+    private FightDisplay fightDisplay;
 
 
     public void run() {
@@ -27,10 +27,17 @@ public class SmashBros extends GraphicsProgram {
 
     // Auxiliary methods
 
+    private void createLevelUI() {
+        levelDisplay = new LevelChooser(getGCanvas());
+        levelDisplay.addElements();
+        setTitle("Select a level");
+    }
+
     private void createFightUI() {
-        display.clean();
-        this.display = new FightDisplay(this, hero, enemy);
-        display.addElements();
+        levelDisplay.clean();
+        fightDisplay = new FightDisplay(getGCanvas(), hero, enemy);
+        fightDisplay.addElements();
+        setTitle("Smash!!");
     }
 
     private void assignLevelToEntities(Level level) {
@@ -39,24 +46,10 @@ public class SmashBros extends GraphicsProgram {
         enemy = entityCreator.getEnemy();
     }
 
-    private void fightEntities() {
-        showInfoPlayers();
-        fightPlayers();
-    }
-
-    private void createLevelUI() {
-        display = new LevelChooser(this);
-        display.addElements();
-    }
-
-    public void showInfoPlayers() {
-        System.out.println("Fight between " + hero.getName() + " and " + enemy.getName() + " is going to start!");
-        System.out.println("[" + hero.getName() + "] " + "life: " + hero.percentageLife());
-        System.out.println("[" + enemy.getName() + "] " + "life: " + enemy.percentageLife());
-    }
-
     public void fightPlayers() {
-        ((FightDisplay) display).executeFight();
+        enemy.attack(hero);
+        hero.attack(enemy);
+        fightDisplay.changeLifePercentage();
     }
 
 
@@ -67,14 +60,14 @@ public class SmashBros extends GraphicsProgram {
         double x = e.getX();
         double y = e.getY();
 
-        if (display instanceof LevelChooser && ((LevelChooser) display).difficultLevel.contains(x,y)) {
+        if (levelDisplay.difficultLevel.contains(x, y)) {
             assignLevelToEntities(Level.DIFFICULT);
             createFightUI();
-        } else if (display instanceof LevelChooser && ((LevelChooser)display).easyLevel.contains(x,y)) {
+        } else if (levelDisplay.easyLevel.contains(x, y)) {
             assignLevelToEntities(Level.EASY);
             createFightUI();
-        } else if (display instanceof FightDisplay && ((FightDisplay) display).attackButton.contains(x,y)) {
-            fightEntities();
+        } else if (fightDisplay.attackButton.contains(x, y) && !enemy.hasDied() && !hero.hasDied()) {
+            fightPlayers();
         }
 
     }
