@@ -1,15 +1,17 @@
 package smashBros;
 
+import java.awt.event.MouseEvent;
 import acm.program.GraphicsProgram;
 import acm.program.ProgramMenuBar;
-import entity.live.Enemy;
-import entity.live.Hero;
-import factory.EntityFactory;
-import factory.Level;
 import gui.FightDisplay;
 import gui.LevelChooser;
 
-import java.awt.event.MouseEvent;
+import entity.live.Enemy;
+import entity.live.Hero;
+
+import factory.EntityFactory;
+import factory.Level;
+
 
 public class SmashBros extends GraphicsProgram {
 
@@ -46,7 +48,7 @@ public class SmashBros extends GraphicsProgram {
         enemy = entityCreator.getEnemy();
     }
 
-    public void fightPlayers() {
+    private void fightPlayers() {
         enemy.attack(hero);
         hero.attack(enemy);
         fightDisplay.changeLifePercentage();
