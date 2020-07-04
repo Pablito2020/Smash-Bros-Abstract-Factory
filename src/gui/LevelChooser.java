@@ -19,9 +19,7 @@ public class LevelChooser {
     }
 
     public void clean() {
-        gCanvas.remove(title);
-        gCanvas.remove(easyLevel);
-        gCanvas.remove(difficultLevel);
+        gCanvas.removeAll();
     }
 
     public void addElements() {
@@ -46,8 +44,8 @@ public class LevelChooser {
     }
 
     private void addButtonsScreen() {
-        this.easyLevel = new Button(title.getX(), gCanvas.getHeight() * 2 / 3, "Easy");
-        this.difficultLevel = new Button(title.getX() + title.getWidth(), gCanvas.getHeight() * 2 /3, "Difficult");
+        this.easyLevel = new Button(title.getX(), (double) gCanvas.getHeight() * 2 / 3, "Easy");
+        this.difficultLevel = new Button(title.getX() + title.getWidth(), (double) gCanvas.getHeight() * 2 /3, "Difficult");
         gCanvas.add(easyLevel);
         gCanvas.add(difficultLevel);
     }

@@ -20,11 +20,11 @@ public class FightDisplay {
     private Hero hero;
     private Enemy enemy;
 
-    public FightDisplay(GCanvas applicationContext, Hero hero, Enemy enemy) {
-        this.gCanvas = applicationContext;
+    public FightDisplay(GCanvas gCanvas, Hero hero, Enemy enemy) {
+        this.gCanvas = gCanvas;
         this.hero = hero;
         this.enemy = enemy;
-        this.attackButton = new Button(applicationContext.getWidth() / 2, applicationContext.getHeight() / 2, "Attack!");
+        this.attackButton = new Button((double) gCanvas.getWidth() / 2, (double) gCanvas.getHeight() / 2, "Attack!");
     }
 
     private void addHero() {
@@ -44,16 +44,13 @@ public class FightDisplay {
     }
 
     public void clean() {
-        gCanvas.remove(imageHero);
-        gCanvas.remove(imageEnemy);
-        gCanvas.remove(attackButton);
-        gCanvas.remove(percentageEnemy);
-        gCanvas.remove(percentageHero);
+        gCanvas.removeAll();
     }
 
     public void addElements() {
         this.gCanvas.setBackground(Color.BLACK);
         this.gCanvas.add(attackButton);
+        // TODO: Needs to go to other location (hero component and enemy component)
         this.addHero();
         this.addEnemy();
         this.addHeroPercentage();
@@ -61,22 +58,24 @@ public class FightDisplay {
     }
 
     public void changeLifePercentage() {
-        this.hero = hero;
-        this.enemy = enemy;
         percentageHero.setLabel(String.valueOf(hero.percentageLife()));
         percentageEnemy.setLabel(String.valueOf(enemy.percentageLife()));
     }
 
     public void addHeroPercentage() {
-        percentageHero = new GLabel(String.valueOf(hero.percentageLife()), 50, 50);
+        percentageHero = new GLabel(String.valueOf(hero.percentageLife()));
         percentageHero.setColor(Color.WHITE);
-        gCanvas.add(percentageHero);
+        double x = imageHero.getX() + imageHero.getWidth() / 2;
+        double y = imageHero.getY() - percentageHero.getHeight();
+        gCanvas.add(percentageHero, x, y);
     }
 
     public void addEnemyPercentage() {
-        percentageEnemy = new GLabel(String.valueOf(enemy.percentageLife()), 150, 150);
+        percentageEnemy = new GLabel(String.valueOf(enemy.percentageLife()));
         percentageEnemy.setColor(Color.WHITE);
-        gCanvas.add(percentageEnemy);
+        double x = imageEnemy.getX() + imageEnemy.getWidth() / 2;
+        double y = imageEnemy.getY() - percentageEnemy.getHeight();
+        gCanvas.add(percentageEnemy, x, y);
     }
 
 }
