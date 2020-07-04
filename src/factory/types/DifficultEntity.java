@@ -7,23 +7,21 @@ import entity.live.enemies.KoopaTroopa;
 import entity.live.heroes.Mario;
 import factory.EntityFactory;
 
-import java.util.Random;
 
 public class DifficultEntity extends EntityFactory {
 
-    private final Random rand = new Random();
-    private int randomNumber;
-
     @Override
     public Hero getHero() {
+        // NOTE: this needs to change if you want to add more heroes
         return new Mario();
     }
+
 
     @Override
     public Enemy getEnemy() {
         randomNumber = rand.nextInt(20);
-        if (randomNumber < 10) return new Bowser();
-        else return new KoopaTroopa();
+        // NOTE: this needs to change if you want to add more enemies
+        return randomNumber < 10 ? new Bowser() : new KoopaTroopa();
     }
 
 }

@@ -7,23 +7,19 @@ import entity.live.enemies.KoopaTroopa;
 import entity.live.heroes.Luigi;
 import factory.EntityFactory;
 
-import java.util.Random;
-
 public class EasyEntity extends EntityFactory {
-
-    private final Random rand = new Random();
-    private int randomNumber;
 
     @Override
     public Hero getHero() {
+        // NOTE: this needs to change if you want to add more heroes
         return new Luigi();
     }
 
     @Override
     public Enemy getEnemy() {
         randomNumber = rand.nextInt(20);
-        if (randomNumber < 15) return new Goomba();
-        else return new KoopaTroopa();
+        // NOTE: this needs to change if you want to add more enemies
+        return randomNumber < 15 ? new Goomba() : new KoopaTroopa();
     }
 
 }
