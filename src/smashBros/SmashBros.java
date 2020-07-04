@@ -12,7 +12,6 @@ import entity.live.Hero;
 import factory.EntityFactory;
 import factory.Level;
 
-
 public class SmashBros extends GraphicsProgram {
 
     private EntityFactory entityCreator;
@@ -21,10 +20,33 @@ public class SmashBros extends GraphicsProgram {
     private LevelChooser levelDisplay;
     private FightDisplay fightDisplay;
 
-
     public void run() {
         this.createLevelUI();
         this.addMouseListeners();
+    }
+
+    // Mouse Listener
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        double x = e.getX();
+        double y = e.getY();
+
+        if (levelDisplay.difficultLevel.contains(x, y)) {
+            assignLevelToEntities(Level.DIFFICULT);
+            createFightUI();
+        } else if (levelDisplay.easyLevel.contains(x, y)) {
+            assignLevelToEntities(Level.EASY);
+            createFightUI();
+        } else if (fightDisplay != null && fightDisplay.attackButton.contains(x, y) && !enemy.hasDied() && !hero.hasDied()) {
+            fightPlayers();
+        }
+
+    }
+
+    @Override
+    protected ProgramMenuBar createMenuBar() {
+        return null;
     }
 
     // Auxiliary methods
@@ -52,31 +74,12 @@ public class SmashBros extends GraphicsProgram {
         enemy.attack(hero);
         hero.attack(enemy);
         fightDisplay.changeLifePercentage();
+        checkIfWeHaveWinner();
     }
 
-
-    // Mouse Listener
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        double x = e.getX();
-        double y = e.getY();
-
-        if (levelDisplay.difficultLevel.contains(x, y)) {
-            assignLevelToEntities(Level.DIFFICULT);
-            createFightUI();
-        } else if (levelDisplay.easyLevel.contains(x, y)) {
-            assignLevelToEntities(Level.EASY);
-            createFightUI();
-        } else if (fightDisplay != null && fightDisplay.attackButton.contains(x, y) && !enemy.hasDied() && !hero.hasDied()) {
-            fightPlayers();
-        }
-
-    }
-
-    @Override
-    protected ProgramMenuBar createMenuBar() {
-        return null;
+    private void checkIfWeHaveWinner() {
+        if(enemy.hasDied()) setTitle("Hero: " + hero.getName() + " has won!");
+        else if(hero.hasDied()) setTitle("Enemy : " + enemy.getName() + " has won!");
     }
 
 }
