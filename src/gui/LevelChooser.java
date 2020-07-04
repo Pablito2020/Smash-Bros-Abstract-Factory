@@ -1,41 +1,26 @@
 package gui;
 
 import acm.graphics.GCanvas;
-import acm.graphics.GLabel;
 import gui.components.Button;
-
-import java.awt.*;
+import gui.components.Title;
 
 public class LevelChooser extends Display {
 
-    private final GLabel title;
-    public Button easyLevel;
-    public Button difficultLevel;
+    private final Title title;
+    public final Button easyLevel;
+    public final Button difficultLevel;
 
     public LevelChooser(GCanvas gCanvas) {
         super(gCanvas);
-        this.title = createSmashBrosText();
-        this.easyLevel = new Button(title.getX(), (double) gCanvas.getHeight() * 2 / 3, "Easy");
-        this.difficultLevel = new Button(title.getX() + title.getWidth(), (double) gCanvas.getHeight() * 2 / 3, "Difficult");
+        this.title = new Title("SUPER SMASH BROS", gCanvas.getWidth(), gCanvas.getHeight());
+        this.easyLevel = new Button(title.getXCentered(), (double) gCanvas.getHeight() * 2 / 3, "Easy");
+        this.difficultLevel = new Button(title.getXCentered() + title.getWidth(), (double) gCanvas.getHeight() * 2 / 3, "Difficult");
     }
 
     public void addElements() {
-        addTitleScreen();
+        gCanvas.add(title);
         gCanvas.add(easyLevel);
         gCanvas.add(difficultLevel);
-    }
-
-    private GLabel createSmashBrosText() {
-        GLabel title = new GLabel("SUPER SMASH BROS");
-        title.setFont("SansSerif-bold-40");
-        title.setColor(Color.WHITE);
-        return title;
-    }
-
-    private void addTitleScreen() {
-        double x = (gCanvas.getWidth() - title.getWidth()) / 2;
-        double y = (gCanvas.getHeight() - title.getHeight()) / 2;
-        gCanvas.add(title, x, y);
     }
 
 }
