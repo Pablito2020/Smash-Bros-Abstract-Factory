@@ -6,29 +6,21 @@ import gui.components.Button;
 
 import java.awt.*;
 
-public class LevelChooser {
+public class LevelChooser extends Display {
 
-    private final GCanvas gCanvas;
     public Button easyLevel;
     public Button difficultLevel;
     private final GLabel title;
 
-    public LevelChooser(GCanvas applicationContext) {
-        this.gCanvas = applicationContext;
+    public LevelChooser(GCanvas gCanvas) {
+        super(gCanvas);
         this.title = createSmashBrosText();
     }
 
-    public void clean() {
-        gCanvas.removeAll();
-    }
-
     public void addElements() {
-        gCanvas.setBackground(Color.BLACK);
         addTitleScreen();
         addButtonsScreen();
     }
-
-    // Title Smash Bros
 
     private GLabel createSmashBrosText() {
         GLabel title = new GLabel("SUPER SMASH BROS");
