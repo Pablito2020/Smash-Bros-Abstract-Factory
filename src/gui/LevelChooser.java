@@ -8,18 +8,21 @@ import java.awt.*;
 
 public class LevelChooser extends Display {
 
+    private final GLabel title;
     public Button easyLevel;
     public Button difficultLevel;
-    private final GLabel title;
 
     public LevelChooser(GCanvas gCanvas) {
         super(gCanvas);
         this.title = createSmashBrosText();
+        this.easyLevel = new Button(title.getX(), (double) gCanvas.getHeight() * 2 / 3, "Easy");
+        this.difficultLevel = new Button(title.getX() + title.getWidth(), (double) gCanvas.getHeight() * 2 / 3, "Difficult");
     }
 
     public void addElements() {
         addTitleScreen();
-        addButtonsScreen();
+        gCanvas.add(easyLevel);
+        gCanvas.add(difficultLevel);
     }
 
     private GLabel createSmashBrosText() {
@@ -33,13 +36,6 @@ public class LevelChooser extends Display {
         double x = (gCanvas.getWidth() - title.getWidth()) / 2;
         double y = (gCanvas.getHeight() - title.getHeight()) / 2;
         gCanvas.add(title, x, y);
-    }
-
-    private void addButtonsScreen() {
-        this.easyLevel = new Button(title.getX(), (double) gCanvas.getHeight() * 2 / 3, "Easy");
-        this.difficultLevel = new Button(title.getX() + title.getWidth(), (double) gCanvas.getHeight() * 2 /3, "Difficult");
-        gCanvas.add(easyLevel);
-        gCanvas.add(difficultLevel);
     }
 
 }
