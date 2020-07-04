@@ -68,7 +68,7 @@ public class SmashBros extends GraphicsProgram {
         } else if (levelDisplay.easyLevel.contains(x, y)) {
             assignLevelToEntities(Level.EASY);
             createFightUI();
-        } else if (fightDisplay.attackButton.contains(x, y) && !enemy.hasDied() && !hero.hasDied()) {
+        } else if (fightDisplay != null && fightDisplay.attackButton.contains(x, y) && !enemy.hasDied() && !hero.hasDied()) {
             fightPlayers();
         }
 
