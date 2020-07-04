@@ -19,6 +19,7 @@ public class FightDisplay extends Display {
         this.attackButton = new Button((double) gCanvas.getWidth() / 2, (double) gCanvas.getHeight() / 2, "Attack!");
     }
 
+    @Override
     public void addElements() {
         gCanvas.add(attackButton);
         gCanvas.add(hero);

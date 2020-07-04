@@ -17,6 +17,7 @@ public class LevelChooser extends Display {
         this.difficultLevel = new Button(title.getXCentered() + title.getWidth(), (double) gCanvas.getHeight() * 2 / 3, "Difficult");
     }
 
+    @Override
     public void addElements() {
         gCanvas.add(title);
         gCanvas.add(easyLevel);

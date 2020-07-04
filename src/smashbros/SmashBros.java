@@ -1,4 +1,4 @@
-package smashBros;
+package smashbros;
 
 import java.awt.event.MouseEvent;
 import acm.program.GraphicsProgram;
@@ -57,17 +57,17 @@ public class SmashBros extends GraphicsProgram {
         setTitle("Select a level");
     }
 
+    private void assignLevelToEntities(Level level) {
+        entityCreator = EntityFactory.parseFactory(level);
+        hero = entityCreator.getHero();
+        enemy = entityCreator.getEnemy();
+    }
+
     private void createFightUI() {
         levelDisplay.clean();
         fightDisplay = new FightDisplay(getGCanvas(), hero, enemy);
         fightDisplay.addElements();
         setTitle("Smash!!");
-    }
-
-    private void assignLevelToEntities(Level level) {
-        entityCreator = EntityFactory.parseFactory(level);
-        hero = entityCreator.getHero();
-        enemy = entityCreator.getEnemy();
     }
 
     private void fightPlayers() {
@@ -78,8 +78,8 @@ public class SmashBros extends GraphicsProgram {
     }
 
     private void checkIfWeHaveWinner() {
-        if(enemy.hasDied()) setTitle("Hero: " + hero.getName() + " has won!");
-        else if(hero.hasDied()) setTitle("Enemy : " + enemy.getName() + " has won!");
+        if(enemy.hasDied()) setTitle(hero.getName() + " has won!");
+        else if(hero.hasDied()) setTitle(enemy.getName() + " has won!");
     }
 
 }

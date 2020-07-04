@@ -4,7 +4,7 @@ import acm.graphics.GCanvas;
 
 import java.awt.*;
 
-class Display {
+abstract class Display {
 
     protected GCanvas gCanvas;
 
@@ -16,6 +16,11 @@ class Display {
     public void clean() {
         gCanvas.removeAll();
     }
+
+    public abstract void addElements();
+
+
+    // Auxiliar private methods
 
     private void makeChangesCanvas() {
         gCanvas.setBackground(Color.BLACK);
