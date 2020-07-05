@@ -1,7 +1,5 @@
 package entity.live.enemies;
 
-import entity.live.Enemy;
-
 public class KoopaTroopa extends Enemy {
 
     public KoopaTroopa() {

@@ -1,7 +1,5 @@
 package entity.live.enemies;
 
-import entity.live.Enemy;
-
 public class Goomba extends Enemy {
 
     public Goomba() {

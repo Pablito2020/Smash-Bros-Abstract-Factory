@@ -1,7 +1,5 @@
 package entity.live.enemies;
 
-import entity.live.Enemy;
-
 public class Bowser extends Enemy {
 
     public Bowser() {

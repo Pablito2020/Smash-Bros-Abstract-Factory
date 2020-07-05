@@ -1,7 +1,7 @@
 package factory.types;
 
-import entity.live.Enemy;
-import entity.live.Hero;
+import entity.live.enemies.Enemy;
+import entity.live.heroes.Hero;
 import entity.live.enemies.Bowser;
 import entity.live.enemies.KoopaTroopa;
 import entity.live.heroes.Mario;
@@ -15,7 +15,6 @@ public class DifficultEntity extends EntityFactory {
         // NOTE: this needs to change if you want to add more heroes
         return new Mario();
     }
-
 
     @Override
     public Enemy getEnemy() {

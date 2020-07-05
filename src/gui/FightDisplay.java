@@ -1,8 +1,8 @@
 package gui;
 
 import acm.graphics.GCanvas;
-import entity.live.Enemy;
-import entity.live.Hero;
+import entity.live.enemies.Enemy;
+import entity.live.heroes.Hero;
 import gui.components.Button;
 import gui.components.LiveEntityUI;
 

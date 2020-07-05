@@ -1,7 +1,5 @@
 package entity.live.heroes;
 
-import entity.live.Hero;
-
 public class Luigi extends Hero {
 
     public Luigi() {

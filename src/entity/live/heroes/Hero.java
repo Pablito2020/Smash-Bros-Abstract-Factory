@@ -1,4 +1,7 @@
-package entity.live;
+package entity.live.heroes;
+
+import entity.live.LiveEntity;
+import entity.live.enemies.Enemy;
 
 public class Hero extends LiveEntity {
 
