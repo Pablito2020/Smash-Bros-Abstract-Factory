@@ -4,11 +4,10 @@
 
 ### 🙌 Utilities of this pattern
 
-This pattern is really usefull to deal with the problem of creating objects without having to specify the exact class of the
-objecct that will be created. In this project, I used this pattern to specify the different levels of the game (easy and difficult)
-and create certain objects depending of the level choosed.
+The Abstract Factory Pattern provides an interface for creating families of related or dependent objects without specifying their concrete classes.
+In this project, I used this pattern to specify the different levels of the game (easy and difficult) and create the Heros and Enemies depending on the level.
 
-### ❓ Prerequesites to understand the factory design pattern:
+### ❓ Prerequesites to understand the abstract factory design pattern:
 
 - Polymorphism
 
@@ -16,12 +15,15 @@ and create certain objects depending of the level choosed.
 
 - Enums (not really needed but it can be very handy to apply these with this pattern)
 
+- Factory Design pattern.
+
+
 ### 📝 UML diagram:
     
-![](https://upload.wikimedia.org/wikipedia/commons/4/43/W3sDesign_Factory_Method_Design_Pattern_UML.jpg)
+![](https://en.wikipedia.org/wiki/Abstract_factory_pattern#/media/File:Abstract_factory_UML.svg)
 
 ### 🌐 Usefull sources to learn it from:
 
-* [pattern tutorial (English)](https://www.tutorialspoint.com/design_pattern/factory_pattern.htm)
-* [Explanatory video (Spanish)](https://www.youtube.com/watch?v=lLvYAzXO7Ek) 
+* [Explanatory video (English)](https://www.youtube.com/watch?v=v-GiuMmsXj4&t=297s) 
+* [Explanatory video (Spanish)](https://www.youtube.com/watch?v=CVlpjFJN17U&t=332s) 
 
