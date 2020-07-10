@@ -22,26 +22,6 @@ public class SmashBros extends GraphicsProgram {
 
     public void run() {
         this.createLevelUI();
-        this.addMouseListeners();
-    }
-
-    // Mouse Listener
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        double x = e.getX();
-        double y = e.getY();
-
-        if (levelDisplay.difficultLevel.contains(x, y)) {
-            assignLevelToEntities(Level.DIFFICULT);
-            createFightUI();
-        } else if (levelDisplay.easyLevel.contains(x, y)) {
-            assignLevelToEntities(Level.EASY);
-            createFightUI();
-        } else if (fightDisplay != null && fightDisplay.attackButton.contains(x, y) && !enemy.hasDied() && !hero.hasDied()) {
-            fightPlayers();
-        }
-
     }
 
     @Override
@@ -52,34 +32,22 @@ public class SmashBros extends GraphicsProgram {
     // Auxiliary methods
 
     private void createLevelUI() {
-        levelDisplay = new LevelChooser(getGCanvas());
+        levelDisplay = new LevelChooser(getGCanvas(), this);
         levelDisplay.addElements();
         setTitle("Select a level");
     }
 
-    private void assignLevelToEntities(Level level) {
+    public void setLevelEntities(Level level) {
         entityCreator = EntityFactory.parseFactory(level);
         hero = entityCreator.getHero();
         enemy = entityCreator.getEnemy();
     }
 
-    private void createFightUI() {
+    public void makeFight() {
         levelDisplay.clean();
         fightDisplay = new FightDisplay(getGCanvas(), hero, enemy);
         fightDisplay.addElements();
         setTitle("Smash!!");
-    }
-
-    private void fightPlayers() {
-        enemy.attack(hero);
-        hero.attack(enemy);
-        fightDisplay.changeLifePercentage();
-        checkIfWeHaveWinner();
-    }
-
-    private void checkIfWeHaveWinner() {
-        if(enemy.hasDied()) setTitle(hero.getName() + " has won!");
-        else if(hero.hasDied()) setTitle(enemy.getName() + " has won!");
     }
 
 }
