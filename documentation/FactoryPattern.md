@@ -20,7 +20,7 @@ In this project, I used this pattern to specify the different levels of the game
 
 ### 📝 UML diagram:
     
-![](https://en.wikipedia.org/wiki/Abstract_factory_pattern#/media/File:Abstract_factory_UML.svg)
+![](https://www.dofactory.com/images/diagrams/net/abstract.gif)
 
 ### 🌐 Usefull sources to learn it from:
 
