@@ -1,15 +1,18 @@
 package gui;
 
 import acm.graphics.GCanvas;
+import smashbros.SmashBros;
 
 import java.awt.*;
 
-abstract class Display {
+public abstract class Display {
 
     protected GCanvas gCanvas;
+    protected SmashBros context;
 
-    public Display(GCanvas gCanvas) {
+    public Display(GCanvas gCanvas, SmashBros context) {
         this.gCanvas = gCanvas;
+        this.context = context;
         this.makeChangesCanvas();
     }
 
@@ -19,8 +22,7 @@ abstract class Display {
 
     public abstract void addElements();
 
-
-    // Auxiliar private methods
+    // Auxiliary private methods
 
     private void makeChangesCanvas() {
         gCanvas.setBackground(Color.BLACK);

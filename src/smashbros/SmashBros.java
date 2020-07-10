@@ -1,27 +1,24 @@
 package smashbros;
 
-import java.awt.event.MouseEvent;
 import acm.program.GraphicsProgram;
 import acm.program.ProgramMenuBar;
-import gui.FightDisplay;
-import gui.LevelChooser;
-
 import entity.live.enemies.Enemy;
 import entity.live.heroes.Hero;
-
 import factory.EntityFactory;
 import factory.Level;
+import gui.Display;
+import gui.FightDisplay;
+import gui.LevelChooser;
 
 public class SmashBros extends GraphicsProgram {
 
     private EntityFactory entityCreator;
     private Enemy enemy;
     private Hero hero;
-    private LevelChooser levelDisplay;
-    private FightDisplay fightDisplay;
+    private Display display;
 
     public void run() {
-        this.createLevelUI();
+        createLevelUI();
     }
 
     @Override
@@ -29,13 +26,7 @@ public class SmashBros extends GraphicsProgram {
         return null;
     }
 
-    // Auxiliary methods
-
-    private void createLevelUI() {
-        levelDisplay = new LevelChooser(getGCanvas(), this);
-        levelDisplay.addElements();
-        setTitle("Select a level");
-    }
+    // Abstract Factory implementation here 👀
 
     public void setLevelEntities(Level level) {
         entityCreator = EntityFactory.parseFactory(level);
@@ -43,11 +34,26 @@ public class SmashBros extends GraphicsProgram {
         enemy = entityCreator.getEnemy();
     }
 
-    public void makeFight() {
-        levelDisplay.clean();
-        fightDisplay = new FightDisplay(getGCanvas(), hero, enemy);
-        fightDisplay.addElements();
+    // Display implementation
+
+    private void createLevelUI() {
+        display = new LevelChooser(getGCanvas(), this);
+        display.addElements();
+        setTitle("Select a level");
+    }
+
+    public void createFight() {
+        display.clean();
+        display = new FightDisplay(getGCanvas(), this, hero, enemy);
+        display.addElements();
         setTitle("Smash!!");
+    }
+
+    public void attack() {
+        if(hero.hasDied() || enemy.hasDied()) return;
+        hero.attack(enemy);
+        enemy.attack(hero);
+        if (display instanceof FightDisplay) ((FightDisplay) display).changeLifePercentage();
     }
 
 }

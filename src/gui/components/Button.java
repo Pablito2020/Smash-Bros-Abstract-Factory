@@ -1,13 +1,17 @@
 package gui.components;
 
 import acm.graphics.*;
+import gui.click.ClickBehavior;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class Button extends GCompound {
 
     private static final double PADDING = 0.1;
 
+    private ClickBehavior clickBehavior;
     private GRoundRect button;
     private GLabel buttonText;
     private String text;
@@ -15,12 +19,14 @@ public class Button extends GCompound {
     private Color textColor = Color.WHITE;
     private Color buttonColor = Color.RED;
 
-    public Button(double x, double y, String text) {
+    public Button(double x, double y, String text, ClickBehavior clickBehavior) {
         this.text = text;
+        this.clickBehavior = clickBehavior;
         this.createText();
         this.createRectangle(x, y);
         this.colorizeButtonPropierties();
         this.addButtonToCompound(x, y);
+        this.addListener();
     }
 
     private void createRectangle(double x, double y) {
@@ -59,6 +65,39 @@ public class Button extends GCompound {
 
     public Color getTextColor() {
         return textColor;
+    }
+
+    public void addListener(){
+        this.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                clickBehavior.clickAction();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+
+            }
+        });
+    }
+
+    public void makeActionClicked() {
+
     }
 
 }
