@@ -1,4 +1,4 @@
-package gui.components;
+package graphicscomponents;
 
 import acm.graphics.GCompound;
 import acm.graphics.GLabel;

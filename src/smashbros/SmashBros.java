@@ -7,8 +7,8 @@ import entity.live.heroes.Hero;
 import factory.EntityFactory;
 import factory.Level;
 import gui.Display;
-import gui.FightDisplay;
-import gui.LevelChooser;
+import gui.fight.FightDisplay;
+import gui.levels.LevelChooser;
 
 public class SmashBros extends GraphicsProgram {
 

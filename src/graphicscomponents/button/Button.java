@@ -1,7 +1,6 @@
-package gui.components;
+package graphicscomponents.button;
 
 import acm.graphics.*;
-import gui.click.ClickBehavior;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;

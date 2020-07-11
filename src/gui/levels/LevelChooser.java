@@ -1,10 +1,9 @@
-package gui;
+package gui.levels;
 
 import acm.graphics.GCanvas;
-import gui.click.DifficultClick;
-import gui.click.EasyClick;
-import gui.components.Button;
-import gui.components.Title;
+import gui.Display;
+import graphicscomponents.button.Button;
+import graphicscomponents.Title;
 import smashbros.SmashBros;
 
 

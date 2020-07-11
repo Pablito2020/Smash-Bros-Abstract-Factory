@@ -1,20 +1,22 @@
-package gui.click;
+package gui.levels;
 
+import graphicscomponents.button.ClickBehavior;
 import factory.Level;
 import smashbros.SmashBros;
 
-public class DifficultClick implements ClickBehavior {
+public class EasyClick implements ClickBehavior {
 
     private SmashBros context;
 
-    public DifficultClick(SmashBros context) {
+    public EasyClick(SmashBros context) {
         this.context = context;
     }
 
     @Override
     public void clickAction() {
-        context.setLevelEntities(Level.DIFFICULT);
+        context.setLevelEntities(Level.EASY);
         context.createFight();
     }
 
 }
+

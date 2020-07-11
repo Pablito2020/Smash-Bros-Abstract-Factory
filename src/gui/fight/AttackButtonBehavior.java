@@ -1,12 +1,13 @@
-package gui.click;
+package gui.fight;
 
+import graphicscomponents.button.ClickBehavior;
 import smashbros.SmashBros;
 
-public class AttackClick implements ClickBehavior {
+public class AttackButtonBehavior implements ClickBehavior {
 
     private SmashBros context;
 
-    public AttackClick(SmashBros context) {
+    public AttackButtonBehavior(SmashBros context) {
         this.context = context;
     }
 
