@@ -4,7 +4,12 @@ import entity.Entity;
 
 public class LiveEntity extends Entity {
 
+    protected String name;
     protected double life;
+
+    public String getName() {
+        return name;
+    }
 
     public void reduceLife(double quantity) {
         life -= quantity;
