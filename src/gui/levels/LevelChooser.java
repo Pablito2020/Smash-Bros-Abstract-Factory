@@ -16,8 +16,8 @@ public class LevelChooser extends Display {
     public LevelChooser(GCanvas gCanvas, SmashBros context) {
         super(gCanvas, context);
         this.title = new Title("Choose the level you want:", gCanvas.getWidth(), gCanvas.getHeight());
-        this.easyLevel = new Button(title.getXCentered(), (double) gCanvas.getHeight() * 2 / 3, "Easy", new EasyClick(context));
-        this.difficultLevel = new Button(title.getXCentered() + title.getWidth(), (double) gCanvas.getHeight() * 2 / 3, "Difficult", new DifficultClick(context));
+        this.easyLevel = new Button(title.getXCentered(), (double) gCanvas.getHeight() * 2 / 3, "Easy", new EasyButtonBehavior(context));
+        this.difficultLevel = new Button(title.getXCentered() + title.getWidth(), (double) gCanvas.getHeight() * 2 / 3, "Difficult", new DifficultButtonBehavior(context));
     }
 
     @Override
