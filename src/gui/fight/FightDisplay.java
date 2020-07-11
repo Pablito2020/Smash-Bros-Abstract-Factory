@@ -3,9 +3,9 @@ package gui.fight;
 import acm.graphics.GCanvas;
 import entity.live.enemies.Enemy;
 import entity.live.heroes.Hero;
-import gui.Display;
-import graphicscomponents.button.Button;
 import graphicscomponents.LiveEntityUI;
+import graphicscomponents.button.Button;
+import gui.Display;
 import smashbros.SmashBros;
 
 public class FightDisplay extends Display {

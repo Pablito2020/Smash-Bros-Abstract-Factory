@@ -1,9 +1,9 @@
 package factory.types;
 
-import entity.live.enemies.Enemy;
-import entity.live.heroes.Hero;
 import entity.live.enemies.Bowser;
+import entity.live.enemies.Enemy;
 import entity.live.enemies.KoopaTroopa;
+import entity.live.heroes.Hero;
 import entity.live.heroes.Mario;
 import factory.EntityFactory;
 

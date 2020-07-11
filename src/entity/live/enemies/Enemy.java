@@ -1,7 +1,7 @@
 package entity.live.enemies;
 
-import entity.live.heroes.Hero;
 import entity.live.LiveEntity;
+import entity.live.heroes.Hero;
 
 public class Enemy extends LiveEntity {
 

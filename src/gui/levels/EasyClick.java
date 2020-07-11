@@ -1,12 +1,12 @@
 package gui.levels;
 
-import graphicscomponents.button.ClickBehavior;
 import factory.Level;
+import graphicscomponents.button.ClickBehavior;
 import smashbros.SmashBros;
 
 public class EasyClick implements ClickBehavior {
 
-    private SmashBros context;
+    private final SmashBros context;
 
     public EasyClick(SmashBros context) {
         this.context = context;

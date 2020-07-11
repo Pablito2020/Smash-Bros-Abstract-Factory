@@ -12,10 +12,9 @@ import gui.levels.LevelChooser;
 
 public class SmashBros extends GraphicsProgram {
 
-    private EntityFactory entityCreator;
+    private Display display;
     private Enemy enemy;
     private Hero hero;
-    private Display display;
 
     public void run() {
         createLevelUI();
@@ -29,7 +28,7 @@ public class SmashBros extends GraphicsProgram {
     // Abstract Factory implementation here 👀
 
     public void setLevelEntities(Level level) {
-        entityCreator = EntityFactory.parseFactory(level);
+        EntityFactory entityCreator = EntityFactory.parseFactory(level);
         hero = entityCreator.getHero();
         enemy = entityCreator.getEnemy();
     }
@@ -50,7 +49,7 @@ public class SmashBros extends GraphicsProgram {
     }
 
     public void attack() {
-        if(hero.hasDied() || enemy.hasDied()) return;
+        if (hero.hasDied() || enemy.hasDied()) return;
         hero.attack(enemy);
         enemy.attack(hero);
         if (display instanceof FightDisplay) ((FightDisplay) display).changeLifePercentage();

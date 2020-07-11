@@ -1,9 +1,9 @@
 package gui.levels;
 
 import acm.graphics.GCanvas;
-import gui.Display;
-import graphicscomponents.button.Button;
 import graphicscomponents.Title;
+import graphicscomponents.button.Button;
+import gui.Display;
 import smashbros.SmashBros;
 
 
@@ -15,7 +15,7 @@ public class LevelChooser extends Display {
 
     public LevelChooser(GCanvas gCanvas, SmashBros context) {
         super(gCanvas, context);
-        this.title = new Title("SUPER SMASH BROS", gCanvas.getWidth(), gCanvas.getHeight());
+        this.title = new Title("Choose the level you want:", gCanvas.getWidth(), gCanvas.getHeight());
         this.easyLevel = new Button(title.getXCentered(), (double) gCanvas.getHeight() * 2 / 3, "Easy", new EasyClick(context));
         this.difficultLevel = new Button(title.getXCentered() + title.getWidth(), (double) gCanvas.getHeight() * 2 / 3, "Difficult", new DifficultClick(context));
     }

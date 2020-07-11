@@ -5,7 +5,7 @@ import smashbros.SmashBros;
 
 public class AttackButtonBehavior implements ClickBehavior {
 
-    private SmashBros context;
+    private final SmashBros context;
 
     public AttackButtonBehavior(SmashBros context) {
         this.context = context;

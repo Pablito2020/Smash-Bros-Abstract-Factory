@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class LiveEntityUI extends GCompound {
 
-    private LiveEntity entity;
+    private final LiveEntity entity;
     private GImage entityImage;
     private GLabel entityPercentage;
 

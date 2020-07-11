@@ -1,6 +1,9 @@
 package graphicscomponents.button;
 
-import acm.graphics.*;
+import acm.graphics.GCompound;
+import acm.graphics.GLabel;
+import acm.graphics.GRectangle;
+import acm.graphics.GRoundRect;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -10,10 +13,10 @@ public class Button extends GCompound {
 
     private static final double PADDING = 0.1;
 
-    private ClickBehavior clickBehavior;
+    private final ClickBehavior clickBehavior;
     private GRoundRect button;
     private GLabel buttonText;
-    private String text;
+    private final String text;
 
     private Color textColor = Color.WHITE;
     private Color buttonColor = Color.RED;
@@ -23,16 +26,16 @@ public class Button extends GCompound {
         this.clickBehavior = clickBehavior;
         this.createText();
         this.createRectangle(x, y);
-        this.colorizeButtonPropierties();
+        this.colorizeButtonProperties();
         this.addButtonToCompound(x, y);
         this.addListener();
     }
 
     private void createRectangle(double x, double y) {
         GRectangle rectangleFromText = buttonText.getBounds();
-        double width = rectangleFromText.getWidth() * PADDING * 2 + rectangleFromText.getWidth() ;
-        double height = rectangleFromText.getHeight() * PADDING * 2  + rectangleFromText.getHeight();
-        button = new GRoundRect(x,y, width, height);
+        double width = rectangleFromText.getWidth() * PADDING * 2 + rectangleFromText.getWidth();
+        double height = rectangleFromText.getHeight() * PADDING * 2 + rectangleFromText.getHeight();
+        button = new GRoundRect(x, y, width, height);
     }
 
     private void createText() {
@@ -44,29 +47,29 @@ public class Button extends GCompound {
         add(buttonText, x + button.getWidth() * PADDING, y + buttonText.getHeight());
     }
 
-    private void colorizeButtonPropierties() {
+    private void colorizeButtonProperties() {
         button.setFilled(true);
         button.setFillColor(buttonColor);
         buttonText.setColor(textColor);
-    }
-
-    public void setRectangleColor(Color color) {
-        buttonColor = color;
     }
 
     public Color getRectangleColor() {
         return buttonColor;
     }
 
-    public void setTextColor(Color color) {
-        textColor = color;
+    public void setRectangleColor(Color color) {
+        buttonColor = color;
     }
 
     public Color getTextColor() {
         return textColor;
     }
 
-    public void addListener(){
+    public void setTextColor(Color color) {
+        textColor = color;
+    }
+
+    public void addListener() {
         this.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
@@ -93,10 +96,6 @@ public class Button extends GCompound {
 
             }
         });
-    }
-
-    public void makeActionClicked() {
-
     }
 
 }
