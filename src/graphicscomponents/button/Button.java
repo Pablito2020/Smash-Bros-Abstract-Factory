@@ -18,18 +18,47 @@ public class Button extends GCompound {
     private GLabel buttonText;
     private final String text;
 
-    private Color textColor = Color.WHITE;
-    private Color buttonColor = Color.RED;
+    private Color normalTextColor = Color.WHITE;
+    private Color normalButtonColor = Color.RED;
+
+    private Color selectionTextColor = Color.BLACK;
+    private Color selectionButtonColor = Color.GREEN;
 
     public Button(double x, double y, String text, ClickBehavior clickBehavior) {
         this.text = text;
         this.clickBehavior = clickBehavior;
         this.createText();
         this.createRectangle(x, y);
-        this.colorizeButtonProperties();
-        this.addButtonToCompound(x, y);
-        this.addListener();
+        this.colorizeButton();
+        this.fusionRectangleAndText(x, y);
+        this.addMouseListeners();
     }
+
+    public Color getRectangleColor() {
+        return button.getColor();
+    }
+
+    public Color getTextColor() {
+        return buttonText.getColor();
+    }
+
+    public void setNormalTextColor(Color color) {
+        normalTextColor = color;
+    }
+
+    public void setSelectionTextColor(Color color) {
+        selectionTextColor = color;
+    }
+
+    public void setNormalRectangleColor(Color color) {
+        normalButtonColor = color;
+    }
+
+    public void setSelectionButtonColor(Color color) {
+        selectionButtonColor = color;
+    }
+
+    // Auxiliary private methods
 
     private void createRectangle(double x, double y) {
         GRectangle rectangleFromText = buttonText.getBounds();
@@ -42,34 +71,17 @@ public class Button extends GCompound {
         buttonText = new GLabel(text);
     }
 
-    private void addButtonToCompound(double x, double y) {
+    private void fusionRectangleAndText(double x, double y) {
         add(button);
         add(buttonText, x + button.getWidth() * PADDING, y + buttonText.getHeight());
     }
 
-    private void colorizeButtonProperties() {
+    private void colorizeButton() {
         button.setFilled(true);
-        button.setFillColor(buttonColor);
-        buttonText.setColor(textColor);
+        setNormalColors();
     }
 
-    public Color getRectangleColor() {
-        return buttonColor;
-    }
-
-    public void setRectangleColor(Color color) {
-        buttonColor = color;
-    }
-
-    public Color getTextColor() {
-        return textColor;
-    }
-
-    public void setTextColor(Color color) {
-        textColor = color;
-    }
-
-    public void addListener() {
+    private void addMouseListeners() {
         this.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
@@ -88,14 +100,25 @@ public class Button extends GCompound {
 
             @Override
             public void mouseEntered(MouseEvent mouseEvent) {
-
+                setSelectionColors();
             }
 
             @Override
             public void mouseExited(MouseEvent mouseEvent) {
-
+                setNormalColors();
             }
         });
     }
 
+    private void setNormalColors() {
+        button.setFillColor(normalButtonColor);
+        buttonText.setColor(normalTextColor);
+    }
+
+    private void setSelectionColors() {
+        button.setFillColor(selectionButtonColor);
+        buttonText.setColor(selectionTextColor);
+    }
+
 }
+
