@@ -1,31 +1,39 @@
 package gui;
 
-import acm.graphics.GCanvas;
-import smashbros.SmashBros;
+import acm.program.GraphicsProgram;
+import acm.program.ProgramMenuBar;
 
 import java.awt.*;
 
-public abstract class Display {
+public class Display extends GraphicsProgram {
 
-    protected GCanvas gCanvas;
-    protected SmashBros context;
 
-    public Display(GCanvas gCanvas, SmashBros context) {
-        this.gCanvas = gCanvas;
-        this.context = context;
+    public Display() {
         this.makeChangesCanvas();
     }
 
     public void clean() {
-        gCanvas.removeAll();
+        removeAll();
     }
 
-    public abstract void addElements();
+    public void addElements(){
+
+    }
+
+    public Display nextScreen(Display display) {
+        clean();
+        return display;
+    }
 
     // Auxiliary private methods
 
     private void makeChangesCanvas() {
-        gCanvas.setBackground(Color.BLACK);
+        setBackground(Color.BLACK);
+    }
+
+    @Override
+    protected ProgramMenuBar createMenuBar() {
+        return null;
     }
 
 }

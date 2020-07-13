@@ -1,58 +1,74 @@
 package smashbros;
 
-import acm.program.GraphicsProgram;
-import acm.program.ProgramMenuBar;
+import components.button.ClickBehavior;
 import entity.live.enemies.Enemy;
 import entity.live.heroes.Hero;
 import factory.EntityFactory;
 import factory.Level;
 import gui.Display;
-import gui.fight.FightDisplay;
-import gui.levels.LevelChooser;
+import gui.FightDisplay;
+import gui.LevelChooser;
 
-public class SmashBros extends GraphicsProgram {
+public class SmashBros {
 
     private Display display;
+    private FightDisplay fightDisplay;
     private Enemy enemy;
     private Hero hero;
 
-    public void run() {
-        createLevelUI();
-    }
-
-    @Override
-    protected ProgramMenuBar createMenuBar() {
-        return null;
+    public static void main(String[] args) {
+        SmashBros game = new SmashBros();
+        game.display = new Display();
+        game.display.start();
+        game.createLevelUI();
     }
 
     // Abstract Factory implementation here 👀
 
-    public void setLevelEntities(Level level) {
+    private void setLevelEntities(Level level) {
         EntityFactory entityCreator = EntityFactory.parseFactory(level);
         hero = entityCreator.getHero();
         enemy = entityCreator.getEnemy();
     }
 
+    // I decided to keep the button behaviors here, because now we can see all the process of choosing the factory and getting the entities in this class
+    // although this violates some OOP principles, this is just a simple program for showing the abstract factory design so, who matters_
+
+    private ClickBehavior easyButtonBehavior() {
+        return () -> {
+            setLevelEntities(Level.EASY);
+            createFightUI();
+        };
+    }
+
+    private ClickBehavior difficultButtonBehavior() {
+        return () -> {
+            setLevelEntities(Level.DIFFICULT);
+            createFightUI();
+        };
+    }
+
     // Display implementation
 
     private void createLevelUI() {
-        display = new LevelChooser(getGCanvas(), this);
-        display.addElements();
-        setTitle("Select a level");
+        LevelChooser levelChooser = new LevelChooser(display, easyButtonBehavior(), difficultButtonBehavior());
+        levelChooser.addElements();
+        display.setTitle("Select a level");
     }
 
-    public void createFight() {
+    private void createFightUI() {
         display.clean();
-        display = new FightDisplay(getGCanvas(), this, hero, enemy);
-        display.addElements();
-        setTitle("Smash!!");
+        ClickBehavior attackBehavior = this::attack;
+        fightDisplay = new FightDisplay(display, hero, enemy, attackBehavior);
+        fightDisplay.addElements();
+        display.setTitle("Smash!!");
     }
 
-    public void attack() {
+    private void attack() {
         if (hero.hasDied() || enemy.hasDied()) return;
         hero.attack(enemy);
         enemy.attack(hero);
-        if (display instanceof FightDisplay) ((FightDisplay) display).changeLifePercentage();
+        fightDisplay.changeLifePercentage();
     }
 
 }

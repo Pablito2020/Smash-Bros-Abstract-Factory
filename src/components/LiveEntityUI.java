@@ -1,4 +1,4 @@
-package graphicscomponents;
+package components;
 
 import acm.graphics.GCompound;
 import acm.graphics.GImage;

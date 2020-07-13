@@ -1,4 +1,4 @@
-package graphicscomponents.button;
+package components.button;
 
 import acm.graphics.GCompound;
 import acm.graphics.GLabel;

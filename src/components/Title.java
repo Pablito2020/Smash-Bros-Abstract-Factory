@@ -1,4 +1,4 @@
-package graphicscomponents;
+package components;
 
 import acm.graphics.GCompound;
 import acm.graphics.GLabel;
@@ -8,7 +8,6 @@ import java.awt.*;
 public class Title extends GCompound {
 
     private final GLabel title;
-    private double xCentered, yCentered;
 
     public Title(String title, double x, double y) {
         this.title = new GLabel(title);
@@ -22,17 +21,9 @@ public class Title extends GCompound {
     }
 
     private void addCentered(double x, double y) {
-        xCentered = (x - title.getWidth()) / 2;
-        yCentered = (y - title.getHeight()) / 2;
+        double xCentered = (x - title.getWidth()) / 2;
+        double yCentered = (y - title.getHeight()) / 2;
         add(title, xCentered, yCentered);
-    }
-
-    public double getXCentered() {
-        return xCentered;
-    }
-
-    public double getYCentered() {
-        return yCentered;
     }
 
 }
