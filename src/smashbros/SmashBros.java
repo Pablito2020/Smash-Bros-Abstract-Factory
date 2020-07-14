@@ -18,8 +18,7 @@ public class SmashBros {
 
     public static void main(String[] args) {
         SmashBros game = new SmashBros();
-        game.display = new Display();
-        game.display.start();
+        game.startDisplay();
         game.createLevelUI();
     }
 
@@ -32,7 +31,7 @@ public class SmashBros {
     }
 
     // I decided to keep the button behaviors here, because now we can see all the process of choosing the factory and getting the entities in this class
-    // although this violates some OOP principles, this is just a simple program for showing the abstract factory design so, who matters_
+    // although this violates some OOP principles, this is just a simple program for showing the abstract factory design so, who matters...
 
     private ClickBehavior easyButtonBehavior() {
         return () -> {
@@ -49,6 +48,11 @@ public class SmashBros {
     }
 
     // Display implementation
+
+    private void startDisplay() {
+        display = new Display();
+        display.start();
+    }
 
     private void createLevelUI() {
         LevelChooser levelChooser = new LevelChooser(display, easyButtonBehavior(), difficultButtonBehavior());
