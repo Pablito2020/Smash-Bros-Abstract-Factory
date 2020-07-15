@@ -2,9 +2,9 @@ package factory;
 
 import entity.live.enemies.Enemy;
 import entity.live.heroes.Hero;
-import factory.types.DifficultEntity;
-import factory.types.EasyEntity;
-import factory.types.MediumEntity;
+import factory.types.DifficultEntityFactory;
+import factory.types.EasyEntityFactory;
+import factory.types.MediumEntityFactory;
 
 import java.util.Random;
 
@@ -17,11 +17,11 @@ public abstract class EntityFactory {
     public static EntityFactory parseFactory(Level level) {
         switch(level) {
             case EASY:
-                return new EasyEntity();
+                return new EasyEntityFactory();
             case MEDIUM:
-                return new MediumEntity();
+                return new MediumEntityFactory();
             case DIFFICULT:
-                return new DifficultEntity();
+                return new DifficultEntityFactory();
             default:
                 throw new IllegalArgumentException("Level " + level + " doesn't exist!");
         }

@@ -6,7 +6,7 @@ import entity.live.heroes.Hero;
 import entity.live.heroes.Mario;
 import factory.EntityFactory;
 
-public class MediumEntity extends EntityFactory {
+public class MediumEntityFactory extends EntityFactory {
 
     @Override
     public Hero getHero() {

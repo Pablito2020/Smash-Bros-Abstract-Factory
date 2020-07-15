@@ -1,21 +1,22 @@
 package factory.types;
 
+import entity.live.enemies.Bowser;
 import entity.live.enemies.Enemy;
-import entity.live.enemies.Goomba;
 import entity.live.heroes.Hero;
-import entity.live.heroes.Luigi;
+import entity.live.heroes.Peach;
 import factory.EntityFactory;
 
-public class EasyEntity extends EntityFactory {
+
+public class DifficultEntityFactory extends EntityFactory {
 
     @Override
     public Hero getHero() {
-        return new Luigi();
+        return new Peach();
     }
 
     @Override
     public Enemy getEnemy() {
-        return new Goomba();
+        return new Bowser();
     }
 
 }
