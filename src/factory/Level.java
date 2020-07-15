@@ -1,3 +1,3 @@
 package factory;
 
-public enum Level {EASY, DIFFICULT}
+public enum Level {EASY, MEDIUM, DIFFICULT}

@@ -40,6 +40,13 @@ public class SmashBros {
         };
     }
 
+    private ClickBehavior mediumButtonBehavior() {
+        return() -> {
+            setLevelEntities(Level.MEDIUM);
+            createFightUI();
+        };
+    }
+
     private ClickBehavior difficultButtonBehavior() {
         return () -> {
             setLevelEntities(Level.DIFFICULT);
@@ -55,7 +62,7 @@ public class SmashBros {
     }
 
     private void createLevelUI() {
-        LevelChooser levelChooser = new LevelChooser(display, easyButtonBehavior(), difficultButtonBehavior());
+        LevelChooser levelChooser = new LevelChooser(display, easyButtonBehavior(),mediumButtonBehavior(), difficultButtonBehavior());
         levelChooser.addElements();
         display.setTitle("Select a level");
     }
