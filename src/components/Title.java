@@ -8,6 +8,7 @@ import java.awt.*;
 public class Title extends GCompound {
 
     private final GLabel title;
+    private double xCentered, yCentered;
 
     public Title(String title, double x, double y) {
         this.title = new GLabel(title);
@@ -21,9 +22,17 @@ public class Title extends GCompound {
     }
 
     private void addCentered(double x, double y) {
-        double xCentered = (x - title.getWidth()) / 2;
-        double yCentered = (y - title.getHeight()) / 2;
+        xCentered = (x - title.getWidth()) / 2;
+        yCentered = (y - title.getHeight()) / 2;
         add(title, xCentered, yCentered);
+    }
+
+    public double getXCentered() {
+        return xCentered;
+    }
+
+    public double getYCentered() {
+        return yCentered;
     }
 
 }
