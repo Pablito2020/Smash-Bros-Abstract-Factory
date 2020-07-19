@@ -1,85 +1,41 @@
 package smashbros;
 
-import components.button.ClickBehavior;
-import entity.live.enemies.Enemy;
-import entity.live.heroes.Hero;
-import factory.EntityFactory;
-import factory.Level;
-import gui.Display;
-import gui.FightDisplay;
-import gui.LevelChooser;
+import mvc.controller.Controller;
+import mvc.controller.LevelController;
+import mvc.model.Model;
+import mvc.view.Display;
 
 public class SmashBros {
 
     private Display display;
-    private FightDisplay fightDisplay;
-    private Enemy enemy;
-    private Hero hero;
+    private Model model;
+    private Controller controller;
 
     public static void main(String[] args) {
         SmashBros game = new SmashBros();
-        game.startDisplay();
-        game.createLevelUI();
+        game.start();
     }
 
-    // Abstract Factory implementation here 👀
-
-    private void setLevelEntities(Level level) {
-        EntityFactory entityCreator = EntityFactory.parseFactory(level);
-        hero = entityCreator.getHero();
-        enemy = entityCreator.getEnemy();
-    }
-
-    // I decided to keep the button behaviors here, because now we can see all the process of choosing the factory and getting the entities in this class
-    // although this violates some OOP principles, this is just a simple program for showing the abstract factory design so, who matters...
-
-    private ClickBehavior easyButtonBehavior() {
-        return () -> {
-            setLevelEntities(Level.EASY);
-            createFightUI();
-        };
-    }
-
-    private ClickBehavior mediumButtonBehavior() {
-        return() -> {
-            setLevelEntities(Level.MEDIUM);
-            createFightUI();
-        };
-    }
-
-    private ClickBehavior difficultButtonBehavior() {
-        return () -> {
-            setLevelEntities(Level.DIFFICULT);
-            createFightUI();
-        };
-    }
-
-    // Display implementation
-
-    private void startDisplay() {
-        display = new Display();
+    private void start() {
+        this.display = new Display();
         display.start();
+        controller = new LevelController(this, display);
     }
 
-    private void createLevelUI() {
-        LevelChooser levelChooser = new LevelChooser(display, easyButtonBehavior(),mediumButtonBehavior(), difficultButtonBehavior());
-        levelChooser.addElements();
-        display.setTitle("Select a level");
+    public Model getModel() {
+        return model;
     }
 
-    private void createFightUI() {
-        display.clean();
-        ClickBehavior attackBehavior = this::attack;
-        fightDisplay = new FightDisplay(display, hero, enemy, attackBehavior);
-        fightDisplay.addElements();
-        display.setTitle("Smash!!");
+    public void setModel(Model model) {
+        this.model = model;
     }
 
-    private void attack() {
-        if (hero.hasDied() || enemy.hasDied()) return;
-        hero.attack(enemy);
-        enemy.attack(hero);
-        fightDisplay.changeLifePercentage();
+    public Controller getController() {
+        return controller;
+    }
+
+    public void setController(Controller controller) {
+        this.controller = controller;
     }
 
 }
